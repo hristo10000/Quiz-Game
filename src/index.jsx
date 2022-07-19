@@ -8,16 +8,16 @@ import {
 } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import LogIn from "./components/";
-import SignUp from "./routes/invoices";
+import LogIn from './components/LogInForm/LogInForm';
+import SignUp from './components/SignUpForm/SignUpForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="expenses" element={<LogIn />} />
-      <Route path="invoices" element={<SignUp />} />
+      <Route path="LogIn" element={<LogIn />} />
+      <Route path="SignUp" element={<SignUp />} />
     </Routes>
   </BrowserRouter>,
 );
