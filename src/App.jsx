@@ -13,8 +13,8 @@ function App() {
       </header>
       <main>
         <div className="toFlex">
-          <Link className="container" to="/invoices"><LogInButton /></Link>
-          <Link className="container" to="/expenses"><SignUpButton /></Link>
+          <Link className="container" to="/Login"><LogInButton /></Link>
+          <Link className="container" to="/Register"><SignUpButton /></Link>
         </div>
       </main>
     </div>
