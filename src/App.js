@@ -1,4 +1,4 @@
-import logo from './images/logo.png';
+import HomePage from './components/Home/home.js'
 import './App.css';
 import React from 'react';
 function App() {
@@ -6,7 +6,7 @@ function App() {
     <React.Fragment>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" height={500} width={500}/>
+        <HomePage></HomePage>
       </header>
     </div>
     </React.Fragment>
