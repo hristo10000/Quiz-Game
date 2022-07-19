@@ -8,6 +8,14 @@ function App() {
       <header className="App-header">
         <HomePage></HomePage>
       </header>
+      <main>
+        if(userIsLoggedIn){
+          <LogoutButton>Logout</LogoutButton>
+        }else{
+          <LoginButton>Login</LoginButton>
+          <SignUpButton>Sign Up</SignUpButton>
+        }
+      </main>
     </div>
     </React.Fragment>
   );
