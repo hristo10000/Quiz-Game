@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HomePage from './components/Home/home';
 import SignUpButton from './components/SignUpButton/SignUpButton';
 import LogInButton from './components/LoginButton/LoginButton';
@@ -12,8 +13,8 @@ function App() {
       </header>
       <main>
         <div className="toFlex">
-          <LogInButton />
-          <SignUpButton />
+          <Link className="container" to="/invoices"><LogInButton /></Link>
+          <Link className="container" to="/expenses"><SignUpButton /></Link>
         </div>
       </main>
     </div>
