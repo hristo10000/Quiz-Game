@@ -2,7 +2,6 @@ import React from 'react';
 import HomePage from './components/Home/home';
 import SignUpButton from './components/SignUpButton/SignUpButton';
 import LogInButton from './components/LoginButton/LoginButton';
-import LogOutButton from './components/LogOutButton/LogOutButton';
 import './App.css';
 
 function App() {
@@ -12,9 +11,10 @@ function App() {
         <HomePage />
       </header>
       <main>
-        <LogOutButton />
-        <LogInButton />
-        <SignUpButton />
+        <div className="toFlex">
+          <LogInButton />
+          <SignUpButton />
+        </div>
       </main>
     </div>
   );

@@ -26,3 +26,8 @@
     transform: rotate(360deg);
   }
 }
+.toFlex{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

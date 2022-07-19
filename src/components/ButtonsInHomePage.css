@@ -9,21 +9,16 @@ body, html {
 }
 
 .container {
-  width: 400px;
-  height: 400px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-0%, -0%);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-inline: 1%;
 }
 
 .center {
   width: 180px;
-  height: 60px;
-  position: absolute;
+  height: 60px; 
 }
 
 .btn {
