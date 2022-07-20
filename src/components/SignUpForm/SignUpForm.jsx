@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 function SignUpForm() {
   const [setformValue] = React.useState({
@@ -14,16 +15,25 @@ function SignUpForm() {
     setformValue.password = event.target.value;
   };
 
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const post = {
+      username: setformValue.username,
+      password: setformValue.password,
+    };
+    axios.post('http://192.168.182.94:8001/api/accounts/register/', { post })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+  };
 
   return (
     <>
       <h2>Sign Up</h2>
-      <form>
-        <input label="username" htmlFor="username" required onChange={handleChangeOnUsername} />
-        <input label="password" htmlFor="password" required onChange={handleChangeOnPassword} />
+      <form onSubmit={handleSubmit}>
+        <input label="username" htmlFor="username" placeholder="enter a username" required onChange={handleChangeOnUsername} />
+        <input label="password" htmlFor="password" type="password" placeholder="enter a password" required onChange={handleChangeOnPassword} />
         <input type="submit" />
       </form>
     </>
