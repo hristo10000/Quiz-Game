@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SignUpForm() {
+function LogInForm() {
   return (
     <form>
       <input label="username" htmlFor="username" required="true" />
@@ -10,4 +10,4 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+export default LogInForm;
