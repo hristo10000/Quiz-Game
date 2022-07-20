@@ -9,35 +9,23 @@ function LoginForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // store the states in the form data
     const loginFormData = new FormData();
     loginFormData.append('username', formValue.username);
     loginFormData.append('password', formValue.password);
 
-    console.log(loginFormData);
-
-    try {
-      // make axios post request
-      await axios({
-        method: 'post',
-        url: 'http://192.168.182.94:8001/api/accounts/login/',
-        data: loginFormData,
-        headers: { 'Content-Type': 'multipart/form-data' },
-      }).then((resp) => {
-        console.log(resp.data);
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    await axios({
+      method: 'post',
+      url: 'http://192.168.182.94:8001/api/accounts/login/',
+      data: loginFormData,
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
   };
-
   const handleChange = (event) => {
     event.preventDefault();
     setformValue({
       ...formValue,
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.value);
   };
 
   return (
@@ -48,7 +36,7 @@ function LoginForm() {
         name="username"
         required
         placeholder="enter username"
-        value={formValue.email}
+        value={formValue.username}
         onChange={handleChange}
       />
       <input
