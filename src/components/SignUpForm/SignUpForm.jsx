@@ -21,7 +21,7 @@ function SignUpForm() {
       username: setformValue.username,
       password: setformValue.password,
     };
-    axios.post('http://192.168.182.94:8001/api/accounts/register/', { post })
+    axios.post('http://192.168.182.94:8001/api/accounts/register/', post)
       .then((res) => {
         console.log(res);
         console.log(res.data);
