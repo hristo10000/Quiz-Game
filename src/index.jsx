@@ -10,7 +10,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
-import ProfilePage from './components/PofilePage/ProfilePage';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

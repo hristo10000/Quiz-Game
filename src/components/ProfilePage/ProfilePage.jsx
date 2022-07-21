@@ -1,11 +1,15 @@
 import React from 'react';
+import PlayButton from './PlayButton';
 
 function ProfilePage() {
   const token = localStorage.getItem('token');
   console.log(token);
-  const UserInfo = localStorage.getItem('token')[1];
-  console.log(UserInfo);
-  return (<p>a</p>);
+  return (
+    <>
+      <h1>{token}</h1>
+      <PlayButton />
+    </>
+  );
 }
 
 export default ProfilePage;
