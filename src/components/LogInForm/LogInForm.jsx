@@ -20,7 +20,7 @@ function LoginForm() {
       data: loginFormData,
       headers: { 'Content-Type': 'multipart/form-data' },
     }).then((response) => {
-      localStorage.setItem('token', [response.data.token, JSON.stringify(response.data.user)]);
+      localStorage.setItem('token', response.data.token);
     });
     navigate('/ProfilePage');
   };

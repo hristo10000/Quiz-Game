@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpForm() {
   const [setformValue] = React.useState({
     username: '',
     password: '',
   });
-
-  let userInfo;
+  const navigate = useNavigate();
 
   const handleChangeOnUsername = (event) => {
     setformValue.username = event.target.value;
@@ -23,10 +23,10 @@ function SignUpForm() {
       username: setformValue.username,
       password: setformValue.password,
     };
-    await axios.post('http://192.168.182.94:8001/api/accounts/register/', data).then((responce) => {
-      userInfo = responce.data;
-      console.log(userInfo);
+    await axios.post('http://192.168.182.94:8001/api/accounts/register/', data).then((response) => {
+      localStorage.setItem('token', response.data.token);
     });
+    navigate('/ProfilePage');
   };
 
   return (
