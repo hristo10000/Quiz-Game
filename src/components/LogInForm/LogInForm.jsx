@@ -16,11 +16,11 @@ function LoginForm() {
 
     await axios({
       method: 'post',
-      url: 'http://192.168.182.94:8001/api/accounts/login/',
+      url: `${window.ip}api/accounts/login/`,
       data: loginFormData,
       headers: { 'Content-Type': 'multipart/form-data' },
     }).then((response) => {
-      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('token', [response.data.token, response.data.user.id]);
     });
     navigate('/ProfilePage');
   };
