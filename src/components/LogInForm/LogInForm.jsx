@@ -7,31 +7,25 @@ function LoginForm() {
     password: '',
   });
 
-  const handleSubmit = async () => {
-    // store the states in the form data
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const loginFormData = new FormData();
-    loginFormData.append('username', formValue.email);
+    loginFormData.append('username', formValue.username);
     loginFormData.append('password', formValue.password);
-    try {
-      // make axios post request
-      // eslint-disable-next-line no-unused-vars
-      const response = await axios({
-        method: 'post',
-        url: '/api/login',
-        data: loginFormData,
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
+    await axios({
+      method: 'post',
+      url: 'http://192.168.182.94:8001/api/accounts/login/',
+      data: loginFormData,
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+  };
   const handleChange = (event) => {
+    event.preventDefault();
     setformValue({
       ...formValue,
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.value);
   };
 
   return (
@@ -42,7 +36,7 @@ function LoginForm() {
         name="username"
         required
         placeholder="enter username"
-        value={formValue.email}
+        value={formValue.username}
         onChange={handleChange}
       />
       <input
@@ -56,7 +50,7 @@ function LoginForm() {
       <button
         type="submit"
       >
-        Login
+        Log In
       </button>
     </form>
   );
