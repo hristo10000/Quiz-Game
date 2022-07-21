@@ -1,12 +1,9 @@
 import React from 'react';
-import axios from 'axios';
-import Helper from '../Helper';
+import Instance from '../../utils/Requests';
 
 function ProfilePage() {
-  const token = localStorage.getItem('token').split(',')[0];
-  const id = localStorage.getItem('token').split(',')[1];
-  Helper(token);
-  axios.get(`${window.ip}api/player/${id}/`);
+  const obj = Instance.get('/api/players/me/');
+  console.log(obj);
   return (<p>a</p>);
 }
 
