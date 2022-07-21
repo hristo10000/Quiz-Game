@@ -12,6 +12,8 @@ import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 
+window.ip = 'http://192.168.182.94:8001/';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>

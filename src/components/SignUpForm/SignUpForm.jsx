@@ -23,7 +23,7 @@ function SignUpForm() {
       username: setformValue.username,
       password: setformValue.password,
     };
-    await axios.post('http://192.168.182.94:8001/api/accounts/register/', data).then((response) => {
+    await axios.post(`${window.ip}api/accounts/register/`, data).then((response) => {
       localStorage.setItem('token', response.data.token);
     });
     navigate('/ProfilePage');
