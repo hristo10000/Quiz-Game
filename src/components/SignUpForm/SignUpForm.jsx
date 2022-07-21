@@ -7,7 +7,7 @@ function SignUpForm() {
     password: '',
   });
 
-  // const [userInfo, setData] = React.useState([]);
+  let userInfo;
 
   const handleChangeOnUsername = (event) => {
     setformValue.username = event.target.value;
@@ -17,13 +17,16 @@ function SignUpForm() {
     setformValue.password = event.target.value;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
       username: setformValue.username,
       password: setformValue.password,
     };
-    axios.post('http://192.168.182.94:8001/api/accounts/register/', data);
+    await axios.post('http://192.168.182.94:8001/api/accounts/register/', data).then((responce) => {
+      userInfo = responce.data;
+      console.log(userInfo);
+    });
   };
 
   return (

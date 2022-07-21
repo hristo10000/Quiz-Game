@@ -6,6 +6,7 @@ function LoginForm() {
     username: '',
     password: '',
   });
+  let userInfo;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,6 +19,9 @@ function LoginForm() {
       url: 'http://192.168.182.94:8001/api/accounts/login/',
       data: loginFormData,
       headers: { 'Content-Type': 'multipart/form-data' },
+    }).then((response) => {
+      userInfo = response.data;
+      console.log(userInfo);
     });
   };
   const handleChange = (event) => {
