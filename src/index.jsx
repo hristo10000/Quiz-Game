@@ -10,7 +10,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
-import Profile from './components/Profile';
+import ProfilePage from './components/PofilePage/ProfilePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +19,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="Login" element={<LogIn />} />
       <Route path="Register" element={<SignUp />} />
-      <Route path="Profile" element={<Profile />} />
+      <Route path="ProfilePage" element={<ProfilePage />} />
     </Routes>
   </BrowserRouter>,
 );

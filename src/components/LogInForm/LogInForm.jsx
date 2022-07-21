@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
   const [formValue, setformValue] = React.useState({
     username: '',
     password: '',
   });
-  let userInfo;
-
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const loginFormData = new FormData();
@@ -20,9 +20,9 @@ function LoginForm() {
       data: loginFormData,
       headers: { 'Content-Type': 'multipart/form-data' },
     }).then((response) => {
-      userInfo = response.data;
-      console.log(userInfo);
+      localStorage.setItem('token', [response.data.token, JSON.stringify(response.data.user)]);
     });
+    navigate('/ProfilePage');
   };
   const handleChange = (event) => {
     event.preventDefault();
