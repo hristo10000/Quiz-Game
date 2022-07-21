@@ -12,7 +12,6 @@ function LoginForm() {
     const loginFormData = new FormData();
     loginFormData.append('username', formValue.email);
     loginFormData.append('password', formValue.password);
-
     try {
       // make axios post request
       // eslint-disable-next-line no-unused-vars

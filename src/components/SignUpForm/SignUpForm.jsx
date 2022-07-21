@@ -6,6 +6,9 @@ function SignUpForm() {
     username: '',
     password: '',
   });
+
+  // const [userInfo, setData] = React.useState([]);
+
   const handleChangeOnUsername = (event) => {
     setformValue.username = event.target.value;
   };
@@ -20,10 +23,7 @@ function SignUpForm() {
       username: setformValue.username,
       password: setformValue.password,
     };
-    axios.post('http://192.168.182.94:8001/api/accounts/register/', data)
-      .then((res) => {
-        console.log(res.data);
-      });
+    axios.post('http://192.168.182.94:8001/api/accounts/register/', data);
   };
 
   return (
@@ -37,5 +37,4 @@ function SignUpForm() {
     </>
   );
 }
-
 export default SignUpForm;
