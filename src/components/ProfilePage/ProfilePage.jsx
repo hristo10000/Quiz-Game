@@ -4,7 +4,12 @@ import Instance from '../../utils/Requests';
 function ProfilePage() {
   const obj = Instance.get('/api/players/me/');
   console.log(obj);
-  return (<p>a</p>);
+  return (
+    <>
+      <h1>User</h1>
+      <PlayButton />
+    </>
+  );
 }
 
 export default ProfilePage;
