@@ -1,5 +1,6 @@
 import React from 'react';
 import Instance from '../../utils/Requests';
+import PlayButton from './PlayButton';
 
 function ProfilePage() {
   const obj = Instance.get('/api/players/me/');
