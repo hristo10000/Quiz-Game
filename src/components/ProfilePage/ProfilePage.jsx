@@ -1,13 +1,17 @@
-import React from 'react';
-import Instance from '../../utils/Requests';
+import React, { useState, useEffect } from 'react';
+import instance from '../../utils/Requests';
 import PlayButton from './PlayButton';
 
 function ProfilePage() {
-  const obj = Instance.get('/api/players/me/');
-  console.log(obj);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    instance.get('/api/players/me/').then(({ data }) => setUser(data));
+  });
+
   return (
     <>
-      <h1>User</h1>
+      <h1>{user?.username}</h1>
       <PlayButton />
     </>
   );
