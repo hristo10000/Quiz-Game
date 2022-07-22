@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import instance from '../../utils/Requests';
 
 function LoginForm() {
   const [formValue, setformValue] = React.useState({
@@ -21,7 +22,9 @@ function LoginForm() {
       headers: { 'Content-Type': 'multipart/form-data' },
     }).then((response) => {
       localStorage.setItem('token', response.data.token);
+      instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
     });
+    instance.get('/api/players/me/');
     navigate('/ProfilePage');
   };
   const handleChange = (event) => {
