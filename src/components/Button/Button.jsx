@@ -1,5 +1,5 @@
 import React from 'react';
-import './buttons.css';
+import './Button.css';
 
 function CustomButton(text) {
   return (

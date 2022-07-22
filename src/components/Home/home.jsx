@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PlayButton from '../buttons/PlayButton/PlayButton';
+import PlayButton from '../Button/Button';
 import instance from '../../utils/Requests';
 
 function Home() {
