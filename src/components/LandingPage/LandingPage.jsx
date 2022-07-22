@@ -10,8 +10,8 @@ function LandingPage() {
       <h2>Welcome to Quiz Quest</h2>
       <h3>The quest to become the best quizer.</h3>
       <div className="toFlex">
-        <Link className="container" to="/Login"><Button text="Login" /></Link>
-        <Link className="container" to="/Register"><Button text="Sign Up" /></Link>
+        <Link className="container" to="/Login"><Button text={{ message: 'Log In' }} /></Link>
+        <Link className="container" to="/Register"><Button text={{ message: 'Sign Up' }} /></Link>
       </div>
     </>
   );

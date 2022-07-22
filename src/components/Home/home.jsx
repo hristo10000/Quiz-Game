@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import PlayButton from '../Button/Button';
+import React, { useEffect, Link } from 'react';
+import Button from '../Button/Button';
 import instance from '../../utils/Requests';
 
 function Home() {
@@ -35,7 +35,8 @@ function Home() {
   return (
     <>
       <h1>{user?.username}</h1>
-      <PlayButton />
+      <Link to="StartGame"><Button text={{ message: 'Start Game' }} /></Link>
+      <Link to="LogOut"><Button text={{ message: 'Log Out' }} /></Link>
     </>
   );
 }

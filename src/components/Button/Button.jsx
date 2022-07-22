@@ -10,7 +10,7 @@ function CustomButton(text) {
             <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line" />
             <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line" />
           </svg>
-          <span style={{ fontSize: 24 }}>{text}</span>
+          <span style={{ fontSize: 24 }}>{text.message}</span>
         </button>
       </div>
     </div>
