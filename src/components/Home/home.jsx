@@ -1,14 +1,43 @@
-import React from 'react';
-import logo from '../../images/logo.png';
+import React, { useEffect } from 'react';
+import PlayButton from '../buttons/PlayButton/PlayButton';
+import instance from '../../utils/Requests';
 
-function HomePage() {
+function Home() {
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const ws = new WebSocket(`ws://192.168.182.94:8001/ws/invitations/${token}/`);
+
+    ws.onopen = () => {
+      ws.send(JSON.stringify({ type: 'game_connect', data: 'ok' }));
+      console.log('connected');
+    };
+
+    ws.onmessage = (e) => {
+      const { type, data } = JSON.parse(e.data);
+      console.log(type, data);
+    };
+
+    ws.onerror = (e) => {
+      console.log(e);
+    };
+
+    ws.onclose = (e) => {
+      console.log('CLOSED', e);
+    };
+  });
+
+  const [user, setUser] = React.useState({});
+
+  useEffect(() => {
+    instance.get('/api/players/me/').then(({ data }) => setUser(data));
+  }, []);
+
   return (
     <>
-      <img src={logo} className="App-logo" alt="logo" height={300} width={450} />
-      <h2>Welcome to Quiz Quest</h2>
-      <h3>The quest to become the best quizer.</h3>
+      <h1>{user?.username}</h1>
+      <PlayButton />
     </>
   );
 }
 
-export default HomePage;
+export default Home;

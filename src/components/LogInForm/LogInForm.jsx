@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
+import instance from '../../utils/Requests';
 
 function LoginForm() {
   const [formValue, setformValue] = React.useState({
@@ -8,21 +9,18 @@ function LoginForm() {
     password: '',
   });
   const navigate = useNavigate();
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const loginFormData = new FormData();
-    loginFormData.append('username', formValue.username);
-    loginFormData.append('password', formValue.password);
-
-    await axios({
-      method: 'post',
-      url: `${window.ip}api/accounts/login/`,
-      data: loginFormData,
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }).then((response) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    instance.post(
+      '/api/accounts/login/',
+      {
+        username: formValue.username,
+        password: formValue.password,
+      },
+    ).then((response) => {
       localStorage.setItem('token', response.data.token);
+      navigate('/home');
     });
-    navigate('/ProfilePage');
   };
   const handleChange = (event) => {
     event.preventDefault();

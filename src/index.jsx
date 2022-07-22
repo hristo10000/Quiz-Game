@@ -6,22 +6,21 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import App from './App';
+// import App from './App';
+import Home from './components/Home/Home';
 import reportWebVitals from './reportWebVitals';
+import LandingPage from './components/LandingPage/LandingPage';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
-import ProfilePage from './components/ProfilePage/ProfilePage';
-
-window.ip = 'http://192.168.182.94:8001/';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="Login" element={<LogIn />} />
-      <Route path="Register" element={<SignUp />} />
-      <Route path="ProfilePage" element={<ProfilePage />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<LogIn />} />
+      <Route path="/register" element={<SignUp />} />
     </Routes>
   </BrowserRouter>,
 );
