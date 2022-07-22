@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import instance from '../../utils/Requests';
 
 function LoginForm() {
@@ -21,6 +20,11 @@ function LoginForm() {
       localStorage.setItem('token', response.data.token);
       navigate('/home');
     });
+    // TODO: delete this useless code
+    //   instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
+    // });
+    // instance.get('/api/players/me/');
+    // navigate('/ProfilePage');
   };
   const handleChange = (event) => {
     event.preventDefault();

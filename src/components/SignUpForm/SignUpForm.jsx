@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import instance from '../../utils/Requests';
 
 function SignUpForm() {
   const [setformValue] = React.useState({
@@ -25,6 +26,7 @@ function SignUpForm() {
     };
     await axios.post(`${window.ip}api/accounts/register/`, data).then((response) => {
       localStorage.setItem('token', response.data.token);
+      instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
     });
     navigate('/ProfilePage');
   };
