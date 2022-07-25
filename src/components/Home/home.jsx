@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
 
 function Home() {
   const [username, setUsername] = React.useState('');
+  const [user, setUser] = React.useState({});
+  const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -29,14 +31,12 @@ function Home() {
     };
   });
 
-  const [user, setUser] = React.useState({});
-
   useEffect(() => {
     instance.get('/api/players/me/').then(({ data }) => setUser(data));
   }, []);
 
   const SendInvite = () => {
-    instance.post('/api/games/', { username });
+    if (username === user?.username) { instance.post('/api/games/', { username }).then(navigate('/lobby')); }
   };
   const handleChange = (event) => {
     event.preventDefault();
