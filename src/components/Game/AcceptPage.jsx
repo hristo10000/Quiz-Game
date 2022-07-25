@@ -1,17 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CustomButton from '../Button/Button';
 
-function AcceptPage(props) {
+function Invitation({ invited_by: invitedBy }) {
+  const navigate = useNavigate();
+  console.log(invitedBy);
   return (
     <>
-      <p>You have been invited to play!</p>
-      <p>{}</p>
-      <p>{}</p>
-      <Link to="/home"><CustomButton text="Accept" /></Link>
-      <Link to="/home"><CustomButton text="Decline" /></Link>
+      <h3>{`${invitedBy} invited you to play!`}</h3>
+      <CustomButton text="Accept" onClick={navigate('/game')} />
     </>
   );
 }
 
-export default AcceptPage;
+export default Invitation;
