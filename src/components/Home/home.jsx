@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
+import AcceptPage from '../Game/AcceptPage';
 
 function Home() {
   const [username, setUsername] = React.useState('');
   const [user, setUser] = React.useState({});
+
   const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -20,6 +22,7 @@ function Home() {
     ws.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       console.log(type, data);
+      navigate('/accept');
     };
 
     ws.onerror = (e) => {
