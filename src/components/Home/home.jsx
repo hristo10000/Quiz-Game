@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
+import AcceptPage from '../Game/AcceptPage';
 
 function Home() {
-  const [setformValue] = React.useState({
-    username: '',
-    password: '',
-  });
+  const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -21,6 +19,7 @@ function Home() {
     ws.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       console.log(type, data);
+      navigate('/accept');
     };
 
     ws.onerror = (e) => {
