@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import instance from '../utils/Requests';
 
 function LogOut() {
-  instance.get('/api/accounts/logout/');
-  localStorage.removeItem('token');
   const navigate = useNavigate();
-  return (navigate('/home'));
+  localStorage.removeItem('token');
+  instance.defaults.headers.common = {};
+  instance.get('/api/accounts/logout/').then(() => navigate('/'));
 }
 
 export default LogOut;
