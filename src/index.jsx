@@ -12,7 +12,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
 import LogOut from './components/LogOut';
-import Lobby from './components/Lobby';
+import Game from './components/Game';
 import AcceptPage from './components/Game/AcceptPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,7 +24,7 @@ root.render(
       <Route path="/login" element={<LogIn />} />
       <Route path="/logout" element={<LogOut />} />
       <Route path="/register" element={<SignUp />} />
-      <Route path="/lobby" element={<Lobby />} />
+      <Route path="/game" element={<Game />} />
       <Route path="/accept" element={<AcceptPage />} />
     </Routes>
   </BrowserRouter>,

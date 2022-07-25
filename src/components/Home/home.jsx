@@ -39,7 +39,9 @@ function Home() {
   }, []);
 
   const SendInvite = () => {
-    if (username === user?.username) { instance.post('/api/games/', { username }).then(navigate('/lobby')); }
+    if (username !== user?.username) { instance.post('/api/games/', { username }).then(navigate('/game')); } else {
+      navigate('/home');
+    }
   };
   const handleChange = (event) => {
     event.preventDefault();
