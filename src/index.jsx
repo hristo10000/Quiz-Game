@@ -12,6 +12,7 @@ import reportWebVitals from './reportWebVitals';
 import LandingPage from './components/LandingPage/LandingPage';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
+import LogOut from './components/LogOut';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,7 @@ root.render(
       <Route path="/" element={<LandingPage />} />
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<LogIn />} />
+      <Route path="/logout" element={<LogOut />} />
       <Route path="/register" element={<SignUp />} />
     </Routes>
   </BrowserRouter>,

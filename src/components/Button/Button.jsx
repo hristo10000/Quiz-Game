@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Button.css';
 
-function CustomButton(textFromOutside) {
-  const { text } = textFromOutside;
+function CustomButton({ text }) {
   return (
     <div className="container">
       <div className="center">
@@ -11,11 +12,19 @@ function CustomButton(textFromOutside) {
             <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line" />
             <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line" />
           </svg>
-          <span style={{ fontSize: 24 }}>{text.message}</span>
+          <span style={{ fontSize: 24 }}>{text}</span>
         </button>
       </div>
     </div>
   );
 }
+
+CustomButton.defaultProps = {
+  text: '',
+};
+
+CustomButton.propTypes = {
+  text: PropTypes.string,
+};
 
 export default CustomButton;

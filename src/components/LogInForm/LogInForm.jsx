@@ -21,11 +21,6 @@ function LoginForm() {
       instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
       navigate('/home');
     });
-    // TODO: delete this useless code
-    //   instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
-    // });
-    // instance.get('/api/players/me/');
-    // navigate('/ProfilePage');
   };
   const handleChange = (event) => {
     event.preventDefault();

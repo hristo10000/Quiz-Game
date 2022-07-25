@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-// import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 import instance from '../../utils/Requests';
 
 function Home() {
   useEffect(() => {
     const token = localStorage.getItem('token');
+    instance.defaults.headers.common.Authorization = `Token ${token}`;
     const ws = new WebSocket(`ws://192.168.182.94:8001/ws/invitations/${token}/`);
 
     ws.onopen = () => {
@@ -33,7 +35,10 @@ function Home() {
   }, []);
 
   return (
-    <h1>{user?.username}</h1>
+    <>
+      <h1>{user?.username}</h1>
+      <Link to="/logout"><Button text="Log Out" /></Link>
+    </>
   );
 }
 
