@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '../Button/Button';
 import instance from '../../utils/Requests';
 import logo from '../../images/logo.png';
+import '../../App.css';
 
 function LandingPage() {
   const navigate = useNavigate();
