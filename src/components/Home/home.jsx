@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
 
+function SendInvite() {
+  // send post
+}
+
 function Home() {
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -38,8 +42,10 @@ function Home() {
     <>
       <h1>{user?.username}</h1>
       <Link to="/logout"><CustomButton text="Log Out" /></Link>
-      <Link to="/invite"><CustomButton text="Play" /></Link>
-
+      <div className="InviteSearch">
+        <input type="text" placeholder="enter username of another player" />
+        <input onSubmit={SendInvite} type="submit" value="Invite" />
+      </div>
     </>
   );
 }
