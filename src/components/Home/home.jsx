@@ -4,9 +4,7 @@ import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
 
 function Home() {
-  const [setformValue] = React.useState({
-    username: '',
-  });
+  const [username, setUsername] = React.useState('');
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -37,17 +35,12 @@ function Home() {
     instance.get('/api/players/me/').then(({ data }) => setUser(data));
   }, []);
 
-  const SendInvite = (event) => {
-    console.log(setformValue.username);
-    event.preventDefault();
-    const data = {
-      username: setformValue.username,
-    };
-    instance.post('/api/games/', data);
+  const SendInvite = () => {
+    instance.post('/api/games/', { username });
   };
   const handleChange = (event) => {
     event.preventDefault();
-    setformValue.username = event.target.value;
+    setUsername(event.target.value);
   };
   return (
     <>
