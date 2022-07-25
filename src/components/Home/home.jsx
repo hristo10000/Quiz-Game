@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
 
-function SendInvite() {
-  // send post
-}
-
 function Home() {
+  const [setformValue] = React.useState({
+    username: '',
+    password: '',
+  });
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -38,13 +38,25 @@ function Home() {
     instance.get('/api/players/me/').then(({ data }) => setUser(data));
   }, []);
 
+  const SendInvite = (event) => {
+    console.log(setformValue.username);
+    event.preventDefault();
+    const data = {
+      username: setformValue.username,
+    };
+    instance.post('/api/games/', data);
+  };
+  const handleChange = (event) => {
+    event.preventDefault();
+    setformValue.username = event.target.value;
+  };
   return (
     <>
       <h1>{user?.username}</h1>
       <Link to="/logout"><CustomButton text="Log Out" /></Link>
       <div className="InviteSearch">
-        <input type="text" placeholder="enter username of another player" />
-        <input onSubmit={SendInvite} type="submit" value="Invite" />
+        <input onChange={handleChange} type="text" placeholder="enter username of another player" />
+        <input onClick={SendInvite} type="submit" value="Invite" />
       </div>
     </>
   );

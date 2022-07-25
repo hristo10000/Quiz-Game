@@ -3,9 +3,11 @@ import instance from '../utils/Requests';
 
 function LogOut() {
   const navigate = useNavigate();
-  localStorage.removeItem('token');
-  instance.defaults.headers.common = {};
-  instance.get('/api/accounts/logout/').then(() => navigate('/'));
+  instance.get('/api/accounts/logout/').then(() => {
+    localStorage.removeItem('token');
+    instance.defaults.headers.common = {};
+    navigate('/');
+  });
 }
 
 export default LogOut;
