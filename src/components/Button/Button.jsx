@@ -1,7 +1,8 @@
 import React from 'react';
 import './Button.css';
 
-function CustomButton(text) {
+function CustomButton(textFromOutside) {
+  const { text } = textFromOutside;
   return (
     <div className="container">
       <div className="center">
