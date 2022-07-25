@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../Button/Button';
 import instance from '../../utils/Requests';
+import CustomButton from '../Button/Button';
 
 function Home() {
   useEffect(() => {
@@ -37,7 +37,9 @@ function Home() {
   return (
     <>
       <h1>{user?.username}</h1>
-      <Link to="/logout"><Button text="Log Out" /></Link>
+      <Link to="/logout"><CustomButton text="Log Out" /></Link>
+      <Link to="/invite"><CustomButton text="Play" /></Link>
+
     </>
   );
 }

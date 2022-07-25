@@ -13,6 +13,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
 import LogOut from './components/LogOut';
+import InvitePage from './components/Game/InvitePage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,6 +24,7 @@ root.render(
       <Route path="/login" element={<LogIn />} />
       <Route path="/logout" element={<LogOut />} />
       <Route path="/register" element={<SignUp />} />
+      <Route path="/invite" element={<InvitePage />} />
     </Routes>
   </BrowserRouter>,
 );
