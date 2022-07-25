@@ -18,6 +18,7 @@ function LoginForm() {
       },
     ).then((response) => {
       localStorage.setItem('token', response.data.token);
+      instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
       navigate('/home');
     });
     // TODO: delete this useless code
