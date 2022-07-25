@@ -6,7 +6,6 @@ import CustomButton from '../Button/Button';
 function Home() {
   const [setformValue] = React.useState({
     username: '',
-    password: '',
   });
   useEffect(() => {
     const token = localStorage.getItem('token');
