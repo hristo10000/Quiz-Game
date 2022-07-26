@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
+import cache from '../../utils/cache';
 
 function LoginForm() {
   const [formValue, setformValue] = React.useState({
@@ -16,9 +17,10 @@ function LoginForm() {
         username: formValue.username,
         password: formValue.password,
       },
-    ).then((response) => {
-      localStorage.setItem('token', response.data.token);
-      instance.defaults.headers.common.Authorization = `Token ${response.data.token}`;
+    ).then(({ data }) => {
+      localStorage.setItem('token', data.token);
+      instance.defaults.headers.common.Authorization = `Token ${data.token}`;
+      cache.set('me', data.user);
       navigate('/home');
     });
   };
