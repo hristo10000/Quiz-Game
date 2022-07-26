@@ -1,15 +1,17 @@
 import React from 'react';
 
 import './Game.css';
+import { useParams } from 'react-router-dom';
 import instance from '../../utils/Requests';
+import cache from '../../utils/cache';
 
-function Lobby(gameToken) {
-  const [gameInfo, setGameInfo] = React.useState({});
-  console.log(gameToken);
-  instance.defaults.headers.common = {};
-  instance.defaults.headers.common.Authorization = `Token ${gameToken}`;
-  instance.get('/api/games/').then(({ data }) => console.log(data));
-  console.log(gameInfo);
+function Game() {
+  // const [gameInfo, setGameInfo] = React.useState({});
+  const { id, channel } = useParams();
+  console.log(channel);
+  console.log(localStorage.getItem('user'));
+  instance.get(`/api/games/${id}/`).then(({ data }) => console.log(data));
+  // console.log(gameInfo);
   return (
     <div className="lobby">
       <div className="player">
@@ -22,4 +24,4 @@ function Lobby(gameToken) {
   );
 }
 
-export default Lobby;
+export default Game;

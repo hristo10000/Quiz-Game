@@ -6,7 +6,6 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import Home from './components/Home/home';
 import reportWebVitals from './reportWebVitals';
 import LandingPage from './components/LandingPage/LandingPage';
 import LogIn from './components/LogInForm/LogInForm';
@@ -14,6 +13,7 @@ import SignUp from './components/SignUpForm/SignUpForm';
 import LogOut from './components/LogOut';
 import Game from './components/Game/Game';
 import AcceptPage from './components/Game/AcceptPage';
+import Home from './components/Home/home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,7 +24,7 @@ root.render(
       <Route path="/login" element={<LogIn />} />
       <Route path="/logout" element={<LogOut />} />
       <Route path="/register" element={<SignUp />} />
-      <Route path="/game" element={<Game />} />
+      <Route path="/game/:id/:channel" element={<Game />} />
       <Route path="/accept" element={<AcceptPage />} />
       <Route path="/game" element={<Game />} />
     </Routes>

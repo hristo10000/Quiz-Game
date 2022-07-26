@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
 import instance from '../../utils/Requests';
-import AcceptInvite from '../Game/AcceptPage';
+import CustomButton from '../Button/Button';
 
 function Home() {
   const [username, setUsername] = React.useState('');
-
-  const [invitation, setInvitation] = React.useState({});
-  setInvitation(undefined);
-
-  const [user, setUser] = React.useState({});
-
   const navigate = useNavigate();
+  useEffect(() => {
+    instance.get('/api/players/me/').then(({ data }) => localStorage.setItem('user', JSON.parse(data)));
+  }, []);
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -22,42 +19,21 @@ function Home() {
 
     ws.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
+      localStorage.setItem('gameChannel', data.channel);
       console.log(type, data);
-      if (data.invited === user.username) {
+      if (data.invited === ) {
         navigate('/accept');
       }
-      if (data.invited_by.username === user.username) {
-        navigate('/game', { gameToken: data.channel });
-      }
-    };
-
-    ws.onerror = (e) => {
-      console.log(e);
-    };
-
-    ws.onclose = (e) => {
-      console.log('CLOSED', e);
     };
   });
-
-  useEffect(() => {
-    instance.get('/api/players/me/').then(({ data }) => setUser(data));
-  }, []);
-
-  // const sendInvite = () => {
-  //   if (username !== user?.username) {
-  //     instance.post('/api/games/', { username });
-  //   } else {
-  //     navigate('/home');
-  //   }
-  // };
+  const sendInvite = () => {
+      instance.post('/api/games/', { username }).then(({ data }) => {
+        navigate(`/game/${data.id}/${data.channel}`);
+      });
+  };
   const handleChange = (event) => {
     event.preventDefault();
     setUsername(event.target.value);
-  };
-
-  const sendInvite = () => {
-    instance.post('/api/games/', { username });
   };
 
   return (
@@ -66,7 +42,9 @@ function Home() {
       {
         invitation && <AcceptInvite invited_by />
       }
-      <div className="invite-search">
+      <h1></h1>
+      <Link to="/logout"><CustomButton text="Log Out" /></Link>
+      <div className="InviteSearch">
         <input onChange={handleChange} type="text" placeholder="enter username of another player" />
         <input onClick={sendInvite} type="submit" value="Invite" />
       </div>

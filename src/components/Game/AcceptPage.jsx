@@ -3,9 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../Button/Button';
 
-function Invitation({ invited_by: invitedBy }) {
-  const navigate = useNavigate();
-  console.log(invitedBy);
+function AcceptPage() {
   return (
     <>
       <h3>{`${invitedBy} invited you to play!`}</h3>
