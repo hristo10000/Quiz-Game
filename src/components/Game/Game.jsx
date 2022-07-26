@@ -2,9 +2,12 @@ import React from 'react';
 import './Game.css';
 import instance from '../../utils/Requests';
 
-function Lobby() {
+function Lobby(gameToken) {
   const [gameInfo, setGameInfo] = React.useState({});
-  instance.get('/api/games/').then(({ data }) => setGameInfo(data));
+  console.log(gameToken);
+  instance.defaults.headers.common = {};
+  instance.defaults.headers.common.Authorization = `Token ${gameToken}`;
+  instance.get('/api/games/').then(({ data }) => console.log(data));
   console.log(gameInfo);
   return (
     <div className="lobby">

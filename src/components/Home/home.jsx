@@ -22,7 +22,12 @@ function Home() {
     ws.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       console.log(type, data);
-      navigate('/accept');
+      if (data.invited === user.username) {
+        navigate('/accept');
+      }
+      if (data.invited_by.username === user.username) {
+        navigate('/game', { gameToken: data.channel });
+      }
     };
 
     ws.onerror = (e) => {
@@ -39,7 +44,9 @@ function Home() {
   }, []);
 
   const SendInvite = () => {
-    if (username !== user?.username) { instance.post('/api/games/', { username }).then(navigate('/game')); } else {
+    if (username !== user?.username) {
+      instance.post('/api/games/', { username });
+    } else {
       navigate('/home');
     }
   };
