@@ -7,14 +7,10 @@ import cache from '../../utils/cache';
 
 function Home() {
   const [username, setUsername] = React.useState('');
-  const [invitation] = React.useState('');
+  const [invitation, setInvitation] = React.useState('');
   const me = cache.get('me');
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    instance.get('/api/players/me/').then(({ data }) => localStorage.setItem('user', JSON.parse(data)));
-  }, []);
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -25,7 +21,6 @@ function Home() {
 
     ws.onmessage = (e) => {
       const { data } = JSON.parse(e.data);
-      localStorage.setItem('gameChannel', data.channel);
       if (data.invited === me.username) {
         setInvitation(data);
       }
@@ -33,6 +28,7 @@ function Home() {
   });
   const sendInvite = () => {
     instance.post('/api/games/', { username }).then(({ data }) => {
+      instance.get(`/api/games/${data.id}/`).then((game) => cache.set('game_info', game.data));
       navigate(`/game/${data.id}/${data.channel}`);
     });
   };

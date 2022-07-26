@@ -8,18 +8,20 @@ import cache from '../../utils/cache';
 function Game() {
   const { id, channel } = useParams();
   const me = cache.get('me');
+  const gameInfo = cache.get('game_info');
   console.log(me.token);
   console.log(channel);
-  console.log(localStorage.getItem('user'));
-  instance.get(`/api/games/${id}/`).then(({ data }) => localStorage.setItem('user', JSON.parse(data)));
   // console.log(gameInfo);
   return (
     <div className="lobby">
       <div className="player">
-        <h1>{}</h1>
+        <img className="image-for-game" src={gameInfo.players[0].avatar} alt="img" />
+        <h1>{gameInfo.players[0].username}</h1>
       </div>
+      <div className="vs-sign">VS</div>
       <div className="player">
-        <h1>Player Two</h1>
+        <img className="image-for-game" src={gameInfo.players[1].avatar} alt="img" />
+        <h1>{gameInfo.players[1].username}</h1>
       </div>
     </div>
   );
