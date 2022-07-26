@@ -27,7 +27,7 @@ function Home() {
       const { data } = JSON.parse(e.data);
       localStorage.setItem('gameChannel', data.channel);
       if (data.invited === me.username) {
-        navigate('/accept');
+        setInvitation(data);
       }
     };
   });
