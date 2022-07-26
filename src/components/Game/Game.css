@@ -1,0 +1,7 @@
+.player{
+    border: 2px solid black;
+    margin: 30px;
+}
+.lobby{
+    display: flex;
+}

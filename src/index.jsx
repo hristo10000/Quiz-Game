@@ -12,7 +12,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import LogIn from './components/LogInForm/LogInForm';
 import SignUp from './components/SignUpForm/SignUpForm';
 import LogOut from './components/LogOut';
-import Game from './components/Game';
+import Game from './components/Game/Game';
 import AcceptPage from './components/Game/AcceptPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
