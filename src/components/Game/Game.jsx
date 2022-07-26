@@ -17,7 +17,7 @@ function Game() {
   return (
     <div className="lobby">
       <div className="player">
-        <h1>Player One</h1>
+        <h1>{}</h1>
       </div>
       <div className="player">
         <h1>Player Two</h1>
