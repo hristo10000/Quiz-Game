@@ -25,7 +25,6 @@ function Home() {
       const { data } = JSON.parse(e.data);
       if (data.invited === me.username) {
         setInvitation(data);
-        navigate('/accept');
       }
     };
 
