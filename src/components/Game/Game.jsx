@@ -4,7 +4,7 @@ import './Game.css';
 import instance from '../../utils/Requests';
 
 function Lobby(gameToken) {
-  const [gameInfo, setGameInfo] = React.useState({});
+  const [gameInfo] = React.useState({});
   console.log(gameToken);
   instance.defaults.headers.common = {};
   instance.defaults.headers.common.Authorization = `Token ${gameToken}`;
