@@ -8,6 +8,8 @@ import cache from '../../utils/cache';
 function Game() {
   // const [gameInfo, setGameInfo] = React.useState({});
   const { id, channel } = useParams();
+  const me = cache.get('me');
+  console.log(me.token);
   console.log(channel);
   console.log(localStorage.getItem('user'));
   instance.get(`/api/games/${id}/`).then(({ data }) => console.log(data));
