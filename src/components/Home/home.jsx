@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
-import Invitation from '../Game/AcceptPage';
+import Invitation from '../Game/Invitation';
 import cache from '../../utils/cache';
 
 function Home() {
