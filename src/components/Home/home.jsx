@@ -4,9 +4,13 @@ import AcceptInvite from '../Game/AcceptPage';
 
 function Home() {
   const [username, setUsername] = React.useState('');
+
   const [invitation, setInvitation] = React.useState({});
   setInvitation(undefined);
 
+  const [user, setUser] = React.useState({});
+
+  const navigate = useNavigate();
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -19,8 +23,11 @@ function Home() {
     ws.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       console.log(type, data);
-      if (data.invited === username) {
-        setInvitation(data);
+      if (data.invited === user.username) {
+        navigate('/accept');
+      }
+      if (data.invited_by.username === user.username) {
+        navigate('/game', { gameToken: data.channel });
       }
     };
 
@@ -33,6 +40,17 @@ function Home() {
     };
   });
 
+  useEffect(() => {
+    instance.get('/api/players/me/').then(({ data }) => setUser(data));
+  }, []);
+
+  // const sendInvite = () => {
+  //   if (username !== user?.username) {
+  //     instance.post('/api/games/', { username });
+  //   } else {
+  //     navigate('/home');
+  //   }
+  // };
   const handleChange = (event) => {
     event.preventDefault();
     setUsername(event.target.value);
