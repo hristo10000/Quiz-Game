@@ -26,7 +26,7 @@ function Home() {
   const sendInvite = () => {
     instance.post('/api/games/', { username }).then(({ data }) => {
       instance.get(`/api/games/${data.id}/`);
-      navigate(`/game/${data.channel}`);
+      navigate(`/game/${data.id}/${data.channel}`);
     });
   };
   const handleChange = (event) => {
@@ -48,7 +48,12 @@ function Home() {
 
       </div>
 
-      {invitation && <Invitation invitedBy={invitation.invited_by.username} /> }
+      {invitation && (
+      <Invitation
+        invitedBy={invitation.invited_by.username}
+        channel={invitation.channel}
+      />
+      ) }
     </>
   );
 }

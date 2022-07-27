@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import './Button.css';
 
 function CustomButton({ text }) {
@@ -19,12 +18,8 @@ function CustomButton({ text }) {
   );
 }
 
-CustomButton.defaultProps = {
-  text: '',
-};
-
 CustomButton.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
 };
 
 export default CustomButton;
