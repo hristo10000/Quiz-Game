@@ -8,12 +8,18 @@ function Game() {
   const { id, channel } = useParams();
   const [currentSocket, setCurrentSocket] = useState(null);
   const [gameInfo, setGameInfo] = useState(null);
+  const [question, setQuestion] = useState(null);
+  const [answers, setAnswers] = useState(null);
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
     const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
     setCurrentSocket(gameWs);
-    gameWs.onopen = () => {
-      console.log('connected');
+    gameWs.onmessage = (e) => {
+      const { type, data } = JSON.parse(e.data);
+      if (type === 'question_update') {
+        setQuestion(data.content);
+        setAnswers(data.answers);
+      }
     };
   }, []);
 
@@ -68,7 +74,14 @@ function Game() {
         )
         : 'Loading...'
     }
-      <div />
+      {question
+        ? (
+          <>
+            <h2>{question}</h2>
+            <h2>{answers[0].content}</h2>
+          </>
+        )
+        : ''}
     </>
   );
 }
