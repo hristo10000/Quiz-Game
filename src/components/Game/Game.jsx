@@ -13,6 +13,7 @@ function Game() {
   const [firstPlayerScore, setFirstPlayerScore] = useState(null);
   const [secondPlayerScore, setSecondPlayerScore] = useState(null);
   const [gameStatus, setGameStatus] = useState(null);
+  const [startOfQuestion, setStartOfQuestion] = useState(null);
 
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
@@ -21,6 +22,7 @@ function Game() {
     gameWs.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       if (type === 'question_update') {
+        setStartOfQuestion(new Date());
         if (gameStatus !== 'ongoing') {
           setGameStatus('ongoing');
         }
@@ -45,8 +47,9 @@ function Game() {
   };
 
   const handleAnswerGiving = (idOfAnswer) => {
-    console.log(idOfAnswer);
-    currentSocket.send(JSON.stringify({ type: 'question_answer', data: { idOfAnswer } }));
+    const timeofAnswer = new Date();
+    const secondsPassed = timeofAnswer.getTime() - startOfQuestion.getTime();
+    currentSocket.send(JSON.stringify({ type: 'question_answer', data: { idOfAnswer, secondsPassed } }));
   };
   return (
     <>
