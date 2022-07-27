@@ -16,20 +16,17 @@ function Home() {
     instance.defaults.headers.common.Authorization = `Token ${token}`;
     const ws = new WebSocket(`ws://192.168.182.94:8001/ws/invitations/${token}/`);
 
-    ws.onopen = () => {
-    };
-
     ws.onmessage = (e) => {
       const { data } = JSON.parse(e.data);
       if (data.invited === me.username) {
         setInvitation(data);
       }
     };
-  });
+  }, []);
   const sendInvite = () => {
     instance.post('/api/games/', { username }).then(({ data }) => {
       instance.get(`/api/games/${data.id}/`).then((game) => cache.set('game_info', game.data));
-      navigate(`/game/${data.id}/${data.channel}`);
+      navigate(`/game/${data.channel}`);
     });
   };
   const handleChange = (event) => {

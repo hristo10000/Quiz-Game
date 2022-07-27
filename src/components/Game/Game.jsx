@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import './Game.css';
 import { useParams } from 'react-router-dom';
-import instance from '../../utils/Requests';
+// import instance from '../../utils/Requests';
 import cache from '../../utils/cache';
 import CustomButton from '../Button/Button';
 
 function Game() {
-  const { id, channel } = useParams();
-  const me = cache.get('me');
+  const { channel } = useParams();
+  const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
+
+  gameWs.onopen = () => {
+    console.log('connected');
+  };
+
+  // const me = cache.get('me');
   const gameInfo = cache.get('game_info');
   const [status, setStatus] = useState();
-  console.log(instance, me.token);
-  console.log(id, channel);
-  console.log(gameInfo);
 
   const handleClick = (event) => {
     event.preventDefault();
     if (status === 'ready') { setStatus('not ready'); } else {
       setStatus('ready');
     }
-    console.log(status);
+    gameWs.send('game_connect');
   };
 
   return (
