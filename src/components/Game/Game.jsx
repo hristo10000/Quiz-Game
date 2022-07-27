@@ -12,7 +12,7 @@ function Game() {
   const [answers, setAnswers] = useState(null);
   const [firstPlayerScore, setFirstPlayerScore] = useState(null);
   const [secondPlayerScore, setSecondPlayerScore] = useState(null);
-  const [gameStaus] = useState(null);
+  const [gameStatus, setGameStatus] = useState(null);
 
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
@@ -21,6 +21,9 @@ function Game() {
     gameWs.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       if (type === 'question_update') {
+        if (gameStatus !== 'ongoing') {
+          setGameStatus('ongoing');
+        }
         setQuestion(data.content);
         setAnswers(data.answers);
       }
@@ -45,12 +48,10 @@ function Game() {
     console.log(idOfAnswer);
     currentSocket.send(JSON.stringify({ type: 'question_answer', data: { idOfAnswer } }));
   };
-
   return (
     <>
       {
-      (gameInfo && gameStaus !== 'ongoing')
-        ? (
+        (gameStatus !== 'ongoing' && gameInfo) ? (
           <div className="lobby">
 
             <div className="players-div">
@@ -82,9 +83,10 @@ function Game() {
                 )}
             </div>
           </div>
-        )
-        : 'Loading...'
-    }
+
+        ) : null
+}
+
       {question
         ? (
           <>
@@ -141,5 +143,4 @@ function Game() {
     </>
   );
 }
-
 export default Game;
