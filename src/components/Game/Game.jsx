@@ -10,7 +10,7 @@ function Game() {
   const [gameInfo, setGameInfo] = useState(null);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState(null);
-  const [gameStaus, setGameStatus] = useState(null);
+  const [gameStaus] = useState(null);
 
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
@@ -22,10 +22,6 @@ function Game() {
         setQuestion(data.content);
         setAnswers(data.answers);
       }
-    };
-
-    gameWs.onquestion_update = () => {
-      if (gameStaus !== 'ongoing') { setGameStatus('ongoing'); }
     };
   }, []);
 
@@ -41,7 +37,7 @@ function Game() {
   return (
     <>
       {
-      gameInfo
+      (gameInfo && gameStaus !== 'ongoing')
         ? (
           <div className="lobby">
 
