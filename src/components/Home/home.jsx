@@ -39,21 +39,17 @@ function Home() {
 
       <Link to="/logout"><CustomButton text="Log Out" /></Link>
 
-      <div className="InviteSearch">
+      <input onChange={handleChange} type="text" placeholder="enter oponent's username" />
 
-        <input onChange={handleChange} type="text" placeholder="enter oponent's username" />
-
-        <CustomButton onClick={sendInvite} type="submit" text="Invite" />
-
-      </div>
+      <CustomButton onClick={sendInvite} type="submit" text="Invite" />
 
       {invitation && (
-      <Invitation
-        invitedBy={invitation.invited_by.username}
-        gameId={invitation.game_id.toString()}
-        channel={invitation.channel}
-      />
-      ) }
+        <Invitation
+          invitedBy={invitation.invited_by.username}
+          gameId={invitation.game_id.toString()}
+          channel={invitation.channel}
+        />
+      )}
     </>
   );
 }
