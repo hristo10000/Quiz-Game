@@ -52,7 +52,7 @@ function Game() {
     if (secondsPassed > 10000) {
       currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: null, time: secondsPassed } }));
     } else {
-      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: secondsPassed } }));
+      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     }
   };
   return (
