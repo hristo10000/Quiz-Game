@@ -24,7 +24,7 @@ root.render(
       <Route path="/login" element={<LogIn />} />
       <Route path="/logout" element={<LogOut />} />
       <Route path="/register" element={<SignUp />} />
-      <Route path="/game/:channel" element={<Game />} />
+      <Route path="/game/:id/:channel" element={<Game />} />
       <Route path="/accept" element={<Invitation />} />
     </Routes>
   </BrowserRouter>,

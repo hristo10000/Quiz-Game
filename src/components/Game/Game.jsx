@@ -44,10 +44,7 @@ function Game() {
         {status === 'ready'
           ? <p>Waiting for your oponent...</p>
           : (
-            <button className="button-ready" type="button" onClick={handleClick}>
-              <CustomButton text="Ready!" />
-              {' '}
-            </button>
+            <CustomButton text="Ready!" onClick={handleClick} />
           )}
       </div>
     </>
