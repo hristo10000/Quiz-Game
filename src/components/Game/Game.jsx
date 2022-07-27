@@ -93,15 +93,13 @@ function Game() {
             <div className="scores">
               <h3>
                 {gameInfo.players[0].username}
-                {' '}
-                score is:
+                `s score is:
                 {' '}
                 {firstPlayerScore}
               </h3>
               <h3>
                 {gameInfo.players[1].username}
-                {' '}
-                score is:
+                `s score is:
                 {' '}
                 {secondPlayerScore}
               </h3>
