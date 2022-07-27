@@ -4,7 +4,7 @@
     width: 350px;
     height: 430px;
 }
-.lobby{
+.players-div{
     display: flex;
 }
 .image-for-game{
@@ -22,7 +22,6 @@
     margin: 0px;
 }
 
-.button-ready{
-    border: 0px;
-    background: none;
+lobby{
+    
 }
