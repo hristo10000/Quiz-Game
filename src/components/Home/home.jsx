@@ -50,7 +50,7 @@ function Home() {
       {invitation && (
       <Invitation
         invitedBy={invitation.invited_by.username}
-        gameId={invitation.game_id}
+        gameId={invitation.game_id.toString()}
         channel={invitation.channel}
       />
       ) }

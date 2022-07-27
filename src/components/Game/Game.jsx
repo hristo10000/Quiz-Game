@@ -8,7 +8,7 @@ function Game() {
   const { id, channel } = useParams();
   const [currentSocket, setCurrentSocket] = useState(null);
   const [gameInfo, setGameInfo] = useState(null);
-  const [gameStaus, setGameStatus] = useState(null);
+  const [gameStaus] = useState(null);
 
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
@@ -17,10 +17,6 @@ function Game() {
 
     gameWs.onopen = () => {
       console.log('connected');
-    };
-
-    gameWs.onquestion_update = () => {
-      if (gameStaus !== 'ongoing') { setGameStatus('ongoing'); }
     };
   }, []);
 
@@ -36,7 +32,7 @@ function Game() {
   return (
     <>
       {
-      gameInfo
+      (gameInfo && gameStaus !== 'ongoing')
         ? (
           <div className="lobby">
 
