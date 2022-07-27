@@ -43,7 +43,7 @@ function Home() {
 
         <input onChange={handleChange} type="text" placeholder="enter oponent's username" />
 
-        <input onClick={sendInvite} type="submit" value="Invite" />
+        <CustomButton onClick={sendInvite} type="submit" text="Invite" />
 
       </div>
 
