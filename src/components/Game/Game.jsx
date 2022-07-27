@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Game.css';
 import { useParams } from 'react-router-dom';
 // import instance from '../../utils/Requests';
@@ -7,13 +7,15 @@ import CustomButton from '../Button/Button';
 
 function Game() {
   const { channel } = useParams();
-  const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
+  const [currentSocket, setCurrentSocket] = useState(null);
+  useEffect(() => {
+    const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
+    setCurrentSocket(gameWs);
+    gameWs.onopen = () => {
+      console.log('connected');
+    };
+  }, []);
 
-  gameWs.onopen = () => {
-    console.log('connected');
-  };
-
-  // const me = cache.get('me');
   const gameInfo = cache.get('game_info');
   const [status, setStatus] = useState();
 
@@ -22,7 +24,7 @@ function Game() {
     if (status === 'ready') { setStatus('not ready'); } else {
       setStatus('ready');
     }
-    gameWs.send('game_connect');
+    currentSocket.send('game_connect');
   };
 
   return (
