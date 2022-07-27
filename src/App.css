@@ -34,3 +34,65 @@
   justify-content: center;
   min-width: 300px;
 }
+
+.home-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h1{
+  position: relative;
+  font-size: 100px;
+  font-style: italic;
+}
+
+.h3{
+  font-size: 80px;
+  font-style: italic;
+}
+
+.invite-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.invite-input{
+  width: auto;
+  height: auto;
+  font-size: 30px;
+  border: 1px solid black;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logout-button{
+  position: absolute -100%;
+  margin: 0;
+  padding: 0;
+}
+
+.page{
+  position: relative;
+  width: 102%;
+}
+
+.custom-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: auto;
+  height: auto;
+}
+
+.custom-form-element{
+  margin: 0;
+  font-size: 30px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-inline: 1%;
+}

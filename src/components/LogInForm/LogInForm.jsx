@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import cache from '../../utils/cache';
+import CustomButton from '../Button/Button';
 
 function LoginForm() {
   const [formValue, setformValue] = React.useState({
@@ -33,30 +34,35 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <p>Login Form</p>
-      <input
-        type="username"
-        name="username"
-        required
-        placeholder="enter username"
-        value={formValue.username}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        required
-        placeholder="enter a password"
-        value={formValue.password}
-        onChange={handleChange}
-      />
-      <button
-        type="submit"
-      >
-        Log In
-      </button>
-    </form>
+    <>
+      <h3>Please Enter Your Credentials</h3>
+      <form onSubmit={handleSubmit} className="custom-form">
+        <input
+          className="custom-form-element"
+          type="username"
+          name="username"
+          required
+          placeholder="enter username"
+          value={formValue.username}
+          onChange={handleChange}
+        />
+        <input
+          className="custom-form-element"
+          type="password"
+          name="password"
+          required
+          placeholder="enter a password"
+          value={formValue.password}
+          onChange={handleChange}
+        />
+        <CustomButton
+          className="custom-form-element"
+          type="submit"
+          text="Submit"
+        />
+      </form>
+
+    </>
   );
 }
 

@@ -6,10 +6,10 @@ import CustomButton from '../Button/Button';
 function Invitation({ invitedBy, gameId, channel }) {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="home-page">
       <h3>{`${invitedBy} invited you to play!`}</h3>
       <CustomButton text="Accept" onClick={() => navigate(`/game/${gameId}/${channel}`)} />
-    </>
+    </div>
   );
 }
 
