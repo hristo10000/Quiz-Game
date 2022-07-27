@@ -25,7 +25,6 @@ function Home() {
   }, []);
   const sendInvite = () => {
     instance.post('/api/games/', { username }).then(({ data }) => {
-      instance.get(`/api/games/${data.id}/`);
       navigate(`/game/${data.id}/${data.channel}`);
     });
   };
