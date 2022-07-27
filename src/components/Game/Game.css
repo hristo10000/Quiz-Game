@@ -21,7 +21,26 @@
 .player h1{
     margin: 0px;
 }
-
+.rows{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.left-answer{
+    margin-right: 70px;
+}
+.right-answer{
+    margin-left: 70px;
+}
+.scores{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}
 lobby{
     
 }

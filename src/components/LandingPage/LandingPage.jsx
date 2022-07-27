@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, {} from 'react';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
-import instance from '../../utils/Requests';
+// import instance from '../../utils/Requests';
 import logo from '../../images/logo.png';
 import '../../App.css';
 
 function LandingPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      instance.defaults.headers.common.Authorization = `Token ${token}`;
-      navigate('/home');
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = window.localStorage.getItem('token');
+  //   if (token) {
+  //     instance.defaults.headers.common.Authorization = `Token ${token}`;
+  //     navigate('/home');
+  //   }
+  // }, []);
 
   return (
     <>

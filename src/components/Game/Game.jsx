@@ -10,6 +10,8 @@ function Game() {
   const [gameInfo, setGameInfo] = useState(null);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState(null);
+  const [firstPlayerScore, setFirstPlayerScore] = useState(null);
+  const [secondPlayerScore, setSecondPlayerScore] = useState(null);
   const [gameStaus] = useState(null);
 
   useEffect(() => {
@@ -21,6 +23,10 @@ function Game() {
       if (type === 'question_update') {
         setQuestion(data.content);
         setAnswers(data.answers);
+      }
+      if (type === 'scores_update') {
+        setFirstPlayerScore(Object.entries(data)[1][1]);
+        setSecondPlayerScore(Object.entries(data)[0][1]);
       }
     };
   }, []);
@@ -34,6 +40,12 @@ function Game() {
     }
     currentSocket.send(JSON.stringify({ type: 'game_connect', data: 'ok' }));
   };
+
+  const handleAnswerGiving = (idOfAnswer) => {
+    console.log(idOfAnswer);
+    currentSocket.send(JSON.stringify({ type: 'question_answer', data: { idOfAnswer } }));
+  };
+
   return (
     <>
       {
@@ -76,8 +88,53 @@ function Game() {
       {question
         ? (
           <>
+            <div className="scores">
+              <h3>
+                {gameInfo.players[0].username}
+                {' '}
+                score is:
+                {' '}
+                {firstPlayerScore}
+              </h3>
+              <h3>
+                {gameInfo.players[1].username}
+                {' '}
+                score is:
+                {' '}
+                {secondPlayerScore}
+              </h3>
+            </div>
             <h2>{question}</h2>
-            <h2>{answers[0].content}</h2>
+            <div className="answers">
+              <div className="rows">
+                <div className="left-answer">
+                  <CustomButton
+                    text={answers[0].content}
+                    onClick={() => handleAnswerGiving(answers[0].id)}
+                  />
+                </div>
+                <div className="right-answer">
+                  <CustomButton
+                    text={answers[1].content}
+                    onClick={() => handleAnswerGiving(answers[1].id)}
+                  />
+                </div>
+              </div>
+              <div className="rows">
+                <div className="left-answer">
+                  <CustomButton
+                    text={answers[2].content}
+                    onClick={() => handleAnswerGiving(answers[2].id)}
+                  />
+                </div>
+                <div className="right-answer">
+                  <CustomButton
+                    text={answers[3].content}
+                    onClick={() => handleAnswerGiving(answers[3].id)}
+                  />
+                </div>
+              </div>
+            </div>
           </>
         )
         : ''}
