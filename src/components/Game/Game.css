@@ -4,7 +4,7 @@
     width: 350px;
     height: 430px;
 }
-.lobby{
+.players-div{
     display: flex;
 }
 .image-for-game{
@@ -20,4 +20,8 @@
 }
 .player h1{
     margin: 0px;
+}
+
+lobby{
+    
 }

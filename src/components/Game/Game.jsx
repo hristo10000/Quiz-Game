@@ -8,18 +8,25 @@ function Game() {
   const { id, channel } = useParams();
   const [currentSocket, setCurrentSocket] = useState(null);
   const [gameInfo, setGameInfo] = useState(null);
+  const [gameStaus, setGameStatus] = useState(null);
+
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
     const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
     setCurrentSocket(gameWs);
+
     gameWs.onopen = () => {
       console.log('connected');
+    };
+
+    gameWs.onquestion_update = () => {
+      if (gameStaus !== 'ongoing') { setGameStatus('ongoing'); }
     };
   }, []);
 
   const [status, setStatus] = useState();
 
-  const handleClick = (event) => {
+  const handleClickReady = (event) => {
     event.preventDefault();
     if (status === 'ready') { setStatus('not ready'); } else {
       setStatus('ready');
@@ -31,8 +38,9 @@ function Game() {
       {
       gameInfo
         ? (
-          <>
-            <div className="lobby">
+          <div className="lobby">
+
+            <div className="players-div">
 
               <div className="player">
 
@@ -57,11 +65,10 @@ function Game() {
               {status === 'ready'
                 ? <p>Waiting for your oponent...</p>
                 : (
-                  <CustomButton text="Ready!" onClick={handleClick} />
+                  <CustomButton text="Ready!" onClick={handleClickReady} />
                 )}
             </div>
-
-          </>
+          </div>
         )
         : 'Loading...'
     }
