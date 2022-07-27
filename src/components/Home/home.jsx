@@ -51,7 +51,12 @@ function Home() {
 
       </div>
 
-      {invitation && <Invitation invitedBy={invitation.invited_by.username} /> }
+      {invitation && (
+      <Invitation
+        invitedBy={invitation.invited_by.username}
+        channel={invitation.channel}
+      />
+      ) }
     </>
   );
 }
