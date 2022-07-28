@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import cache from '../../utils/cache';
 import CustomButton from '../Button/Button';
+import eyeOpened from '../../images/password-eye.jpg';
+import eyeClosed from '../../images/password-eye-slashed.jpg';
 
 function LoginForm() {
   const [formValue, setformValue] = React.useState({
@@ -48,29 +50,30 @@ function LoginForm() {
         value={formValue.username}
         onChange={handleChange}
       />
-      <input
-        className="custom-form-element"
-        type={passwordType}
-        name="password"
-        required
-        placeholder="enter password"
-        value={formValue.password}
-        onChange={handleChange}
-      />
+      <div>
+        <input
+          className="custom-form-element"
+          type={passwordType}
+          name="password"
+          required
+          placeholder="enter password"
+          value={formValue.password}
+          onChange={handleChange}
+        />
+        <button
+          className="eye"
+          type="button"
+          onClick={handlePasswordTypeChange}
+        >
+          {passwordType === 'text'
+            ? <img src={eyeClosed} alt="eye" width="43px" height="30px" /> : <img src={eyeOpened} alt="eye" width="43px" height="30px" />}
+        </button>
+      </div>
       <CustomButton
         className="custom-form-element"
         type="submit"
         text="Submit"
       />
-      <button
-        className="custom-form-element"
-        type="button"
-        text='"toggle password'
-        onClick={handlePasswordTypeChange}
-      >
-        Change passqord type
-
-      </button>
     </form>
   );
 }
