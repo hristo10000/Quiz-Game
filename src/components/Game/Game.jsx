@@ -167,6 +167,7 @@ function Game() {
 
                 <h3>
                   score:
+                  {' '}
                   {firstPlayerScore}
                 </h3>
               </div>
@@ -217,6 +218,7 @@ function Game() {
 
                 <h3>
                   score:
+                  {' '}
                   {secondPlayerScore}
                 </h3>
 
