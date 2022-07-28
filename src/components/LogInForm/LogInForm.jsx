@@ -62,12 +62,15 @@ function LoginForm() {
         type="submit"
         text="Submit"
       />
-      <CustomButton
+      <button
         className="custom-form-element"
         type="button"
         text='"toggle password'
         onClick={handlePasswordTypeChange}
-      />
+      >
+        Change passqord type
+
+      </button>
     </form>
   );
 }
