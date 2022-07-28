@@ -39,7 +39,7 @@ function EndGame() {
         navigate(`/game/${data.id}/${data.channel}`);
       });
     } else {
-      instance.post('/api/games/', { usernameOfWinner }).then(({ data }) => {
+      instance.post('/api/games/', { username: usernameOfLoser }).then(({ data }) => {
         navigate(`/game/${data.id}/${data.channel}`);
       });
     }
