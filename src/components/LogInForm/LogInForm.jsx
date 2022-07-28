@@ -35,7 +35,8 @@ function LoginForm() {
 
   return (
     <>
-      <h3>Please Enter Your Credentials</h3>
+      <h3>Log In</h3>
+      <h4>Enter Your Credentials</h4>
       <form onSubmit={handleSubmit} className="custom-form">
         <input
           className="custom-form-element"
@@ -51,7 +52,7 @@ function LoginForm() {
           type="password"
           name="password"
           required
-          placeholder="enter a password"
+          placeholder="enter password"
           value={formValue.password}
           onChange={handleChange}
         />

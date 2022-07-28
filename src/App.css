@@ -45,6 +45,8 @@ h1{
   position: relative;
   font-size: 100px;
   font-style: italic;
+  margin-top: 0;
+  margin-bottom: 10%
 }
 
 .h3{
