@@ -80,7 +80,7 @@ function Game() {
 
                 <img className="image-for-game" src={gameInfo?.players[0].avatar} alt="img" />
 
-                <h1>{gameInfo.players[0].username}</h1>
+                <h2>{gameInfo.players[0].username}</h2>
 
               </div>
 
@@ -90,7 +90,7 @@ function Game() {
 
                 <img className="image-for-game" src={gameInfo.players[1].avatar} alt="img" />
 
-                <h1>{gameInfo.players[1].username}</h1>
+                <h2>{gameInfo.players[1].username}</h2>
 
               </div>
 

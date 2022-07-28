@@ -11,7 +11,7 @@ body, html {
 .container {
   transform: translate(-0%, -0%);
   display: flex;
-  margin-inline: 1%;
+  align-self: center;
 }
 
 .center {
@@ -26,7 +26,7 @@ body, html {
   background: transparent;
   border: 1px solid black;
   outline: none;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   border-radius: 5px;
 }
 
@@ -38,11 +38,11 @@ svg {
   stroke: #fff;
   stroke-dasharray: 150 480;
   stroke-dashoffset: 150;
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .btn:hover {
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   background: black;
   color: white;
 }

@@ -34,23 +34,24 @@ function Home() {
   };
 
   return (
-    <>
-      <h1>{me?.username}</h1>
-
-      <Link to="/logout"><CustomButton text="Log Out" /></Link>
-
-      <input onChange={handleChange} type="text" placeholder="enter oponent's username" />
-
-      <CustomButton onClick={sendInvite} type="submit" text="Invite" />
-
-      {invitation && (
+    <div className="page">
+      <Link to="/logout" className="logout-button"><CustomButton text="Log Out" /></Link>
+      {invitation ? (
         <Invitation
           invitedBy={invitation.invited_by.username}
           gameId={invitation.game_id.toString()}
           channel={invitation.channel}
         />
+      ) : (
+        <div className="home-page">
+          <h1>{me?.username}</h1>
+          <div className="invite-div">
+            <input onChange={handleChange} type="text" placeholder="enter oponent's username" className="invite-input" />
+            <CustomButton onClick={sendInvite} type="submit" text="Invite" />
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 }
 
