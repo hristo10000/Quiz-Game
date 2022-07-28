@@ -34,36 +34,33 @@ function LoginForm() {
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit} className="custom-form">
       <h3>Log In</h3>
       <h4>Enter Your Credentials</h4>
-      <form onSubmit={handleSubmit} className="custom-form">
-        <input
-          className="custom-form-element"
-          type="username"
-          name="username"
-          required
-          placeholder="enter username"
-          value={formValue.username}
-          onChange={handleChange}
-        />
-        <input
-          className="custom-form-element"
-          type="password"
-          name="password"
-          required
-          placeholder="enter password"
-          value={formValue.password}
-          onChange={handleChange}
-        />
-        <CustomButton
-          className="custom-form-element"
-          type="submit"
-          text="Submit"
-        />
-      </form>
-
-    </>
+      <input
+        className="custom-form-element"
+        type="username"
+        name="username"
+        required
+        placeholder="enter username"
+        value={formValue.username}
+        onChange={handleChange}
+      />
+      <input
+        className="custom-form-element"
+        type="password"
+        name="password"
+        required
+        placeholder="enter password"
+        value={formValue.password}
+        onChange={handleChange}
+      />
+      <CustomButton
+        className="custom-form-element"
+        type="submit"
+        text="Submit"
+      />
+    </form>
   );
 }
 

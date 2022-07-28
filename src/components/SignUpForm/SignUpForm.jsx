@@ -33,14 +33,13 @@ function SignUpForm() {
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit} className="custom-form">
       <h3>Sign Up</h3>
-      <form onSubmit={handleSubmit} className="custom-form">
-        <input className="custom-form-element" label="username" htmlFor="username" placeholder="enter a username" required onChange={handleChangeOnUsername} />
-        <input className="custom-form-element" label="password" htmlFor="password" type="password" placeholder="enter a password" required onChange={handleChangeOnPassword} />
-        <CustomButton className="custom-form-element" type="submit" text="Submit" />
-      </form>
-    </>
+      <h4>Enter Your Credentials</h4>
+      <input className="custom-form-element" label="username" htmlFor="username" placeholder="enter a username" required onChange={handleChangeOnUsername} />
+      <input className="custom-form-element" label="password" htmlFor="password" type="password" placeholder="enter a password" required onChange={handleChangeOnPassword} />
+      <CustomButton className="custom-form-element" type="submit" text="Submit" />
+    </form>
   );
 }
 export default SignUpForm;
