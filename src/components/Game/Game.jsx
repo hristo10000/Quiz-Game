@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Game.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
@@ -18,6 +18,48 @@ function Game() {
   const [startOfQuestion, setStartOfQuestion] = useState(null);
   const navigate = useNavigate();
 
+  const Ref = useRef(null);
+
+  const [timer, setTimer] = useState('00');
+
+  const getTimeRemaining = (e) => {
+    const total = Date.parse(e) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    return {
+      total, seconds,
+    };
+  };
+
+  const startTimer = (e) => {
+    const {
+      total, seconds,
+    } = getTimeRemaining(e);
+    if (total >= 0) {
+      setTimer(seconds);
+    }
+  };
+
+  const clearTimer = (e) => {
+    setTimer('10');
+    if (Ref.current) clearInterval(Ref.current);
+    const idTimer = setInterval(() => {
+      startTimer(e);
+    }, 1000);
+    Ref.current = idTimer;
+  };
+
+  const getDeadTime = () => {
+    const deadline = new Date();
+    deadline.setSeconds(deadline.getSeconds() + 10);
+    return deadline;
+  };
+  useEffect(() => {
+    clearTimer(getDeadTime());
+  }, []);
+  const ResetTimer = () => {
+    clearTimer(getDeadTime());
+  };
+
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
     const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
@@ -25,6 +67,7 @@ function Game() {
     gameWs.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       if (type === 'question_update') {
+        ResetTimer();
         setAnswerStatus('not answered');
         setStartOfQuestion(new Date());
         if (gameStatus !== 'ongoing') {
@@ -129,6 +172,7 @@ function Game() {
                 {secondPlayerScore}
               </h3>
             </div>
+            <h2>{timer}</h2>
             <h2>{question}</h2>
             {answerStatus !== 'answered' ? (
               <div className="answers">
