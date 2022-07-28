@@ -67,7 +67,7 @@ function Game() {
     const timeofAnswer = new Date();
     const secondsPassed = timeofAnswer.getTime() - startOfQuestion.getTime();
     if (secondsPassed > 10000) {
-      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
+      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: null, time: 10000 - secondsPassed } }));
     } else {
       currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     }
