@@ -32,15 +32,6 @@ function Game() {
         setQuestion(data.content);
         setAnswers(data.answers);
       }
-      // if (type === 'round_winner') {
-      //   if (data.winner === Object.entries(data.answers)[1][0]) {
-      //     let helper = firstPlayerScore;
-      //     setFirstPlayerScore(helper += 10);
-      //   } else {
-      //     let helper = secondPlayerScore;
-      //     setSecondPlayerScore(helper += 10);
-      //   }
-      // }
       if (type === 'game_update') {
         if (data.state === 'in_progress') {
           setFirstPlayerScore(Object.entries(data.data.score)[1][1]);
