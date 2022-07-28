@@ -114,55 +114,72 @@ function Game() {
 
       {question
         ? (
-          <>
-            <div className="scores">
-              <h3>
-                {gameInfo.players[0].username}
-                `s score is:
-                {' '}
-                {firstPlayerScore}
-              </h3>
-              <h3>
-                {gameInfo.players[1].username}
-                `s score is:
-                {' '}
-                {secondPlayerScore}
-              </h3>
-            </div>
-            <h2>{question}</h2>
-            {answerStatus !== 'answered' ? (
-              <div className="answers">
-                <div className="rows">
-                  <div className="left-answer">
-                    <CustomButton
-                      text={answers[0].content}
-                      onClick={() => handleAnswerGiving(answers[0].id)}
-                    />
-                  </div>
-                  <div className="right-answer">
-                    <CustomButton
-                      text={answers[1].content}
-                      onClick={() => handleAnswerGiving(answers[1].id)}
-                    />
-                  </div>
-                </div>
-                <div className="rows">
-                  <div className="left-answer">
-                    <CustomButton
-                      text={answers[2].content}
-                      onClick={() => handleAnswerGiving(answers[2].id)}
-                    />
-                  </div>
-                  <div className="right-answer">
-                    <CustomButton
-                      text={answers[3].content}
-                      onClick={() => handleAnswerGiving(answers[3].id)}
-                    />
-                  </div>
-                </div>
+          <div className="ongoing-game-screen">
+            <div className="player-score">
+              <div className="player">
+
+                <img className="image-for-game" src={gameInfo?.players[0].avatar} alt="img" />
+
+                <h6 className="username-lobby">{gameInfo.players[0].username}</h6>
+
+                <h3>
+                  score:
+                  {firstPlayerScore}
+                </h3>
+
               </div>
-            ) : <p className="waitong-text">Waiting for your opponent to answer...</p>}
-          </>
+            </div>
+            <div className="question-and-answers">
+              <h2 className="question">{question}</h2>
+              {answerStatus !== 'answered' ? (
+                <div className="answers">
+                  <div className="rows">
+                    <div className="left-answer">
+                      <CustomButton
+                        text={answers[0].content}
+                        onClick={() => handleAnswerGiving(answers[0].id)}
+                      />
+                    </div>
+                    <div className="right-answer">
+                      <CustomButton
+                        text={answers[1].content}
+                        onClick={() => handleAnswerGiving(answers[1].id)}
+                      />
+                    </div>
+                  </div>
+                  <div className="rows">
+                    <div className="left-answer">
+                      <CustomButton
+                        text={answers[2].content}
+                        onClick={() => handleAnswerGiving(answers[2].id)}
+                      />
+                    </div>
+                    <div className="right-answer">
+                      <CustomButton
+                        text={answers[3].content}
+                        onClick={() => handleAnswerGiving(answers[3].id)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )
+                : <p className="waiting-text">Waiting for your opponent to answer...</p>}
+            </div>
+            <div className="player-score">
+              <div className="player">
+
+                <img className="image-for-game" src={gameInfo?.players[1].avatar} alt="img" />
+
+                <h6 className="username-lobby">{gameInfo.players[1].username}</h6>
+
+                <h3>
+                  score:
+                  {secondPlayerScore}
+                </h3>
+
+              </div>
+            </div>
+          </div>
         )
         : ''}
     </>

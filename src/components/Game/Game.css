@@ -4,6 +4,18 @@
     width: 400px;
     height: 510px;
 }
+.player-score>.player{
+    border: 2px solid black;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+.player-score>.player>.image-for-game{
+    width: 93%;
+    height: 40%;
+    margin: 10px;
+    border: solid black;
+}
 .players-div{
     display: flex;
 }
@@ -17,6 +29,7 @@
     margin-top: 10%;
     font-weight: bold;
     font-size: 180px;
+    font-style: italic;
 }
 .player h1{
     margin: 0px;
@@ -26,12 +39,11 @@
     flex-direction: row;
     margin-bottom: 40px;
     margin-top: 30px;
-    justify-content: space-between;
+    justify-content: center;
 }
 .left-answer{
     margin-right: 70px;
 }
-
 .right-answer{
     margin-left: 70px;
 }
@@ -69,4 +81,49 @@ h5{
     align-items: center;
     justify-content: center;
     align-content: center;
+}
+
+.question{
+    font-size: 40px;
+}
+
+.ongoing-game-screen{
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ongoing-game-screen>:nth-child(1){
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ongoing-game-screen>:nth-child(2){
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ongoing-game-screen>:nth-child(3){
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.question-and-answers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.answers{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
