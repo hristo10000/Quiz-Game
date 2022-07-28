@@ -41,6 +41,7 @@ function Home() {
           invitedBy={invitation.invited_by.username}
           gameId={invitation.game_id.toString()}
           channel={invitation.channel}
+          message="invited you to play!"
         />
       ) : (
         <div className="home-page">
