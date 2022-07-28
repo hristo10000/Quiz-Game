@@ -2,11 +2,15 @@ import React from 'react';
 
 function EndGame() {
   return (
-    <>
-      ewer
-      wqewe
-      werqw
-    </>
+    <h1>
+      The Winner is
+      {' '}
+      {localStorage.getItem('winner')}
+      {' '}
+      with score:
+      {' '}
+      {localStorage.getItem('score')}
+    </h1>
   );
 }
 

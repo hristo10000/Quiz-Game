@@ -40,11 +40,13 @@ function Game() {
       //   }
       // }
       if (type === 'game_update') {
-        setFirstPlayerScore(Object.entries(data.score)[1][1]);
-        setSecondPlayerScore(Object.entries(data)[0][1]);
+        if (data.state === 'in_progress') {
+          setFirstPlayerScore(Object.entries(data.data.score)[1][1]);
+          setSecondPlayerScore(Object.entries(data.data.score)[0][1]);
+        }
         if (data.state === 'finished') {
-          localStorage.setItem('winner', data.winner);
-          if (data.winner === data.connected[1]) { localStorage.setItem('score', firstPlayerScore); } else { localStorage.setItem('score', secondPlayerScore); }
+          localStorage.setItem('winner', data.winner.username);
+          if (data.winner === data.players[0].username) { localStorage.setItem('score', Object.entries(data.data.score)[0][1]); } else { localStorage.setItem('score', Object.entries(data.data.score)[1][1]); }
           navigate('/end');
         }
       }
@@ -65,7 +67,7 @@ function Game() {
     const timeofAnswer = new Date();
     const secondsPassed = timeofAnswer.getTime() - startOfQuestion.getTime();
     if (secondsPassed > 10000) {
-      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: null, time: secondsPassed } }));
+      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     } else {
       currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     }
