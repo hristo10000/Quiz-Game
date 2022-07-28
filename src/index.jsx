@@ -14,6 +14,7 @@ import LogOut from './components/LogOut';
 import Game from './components/Game/Game';
 import Invitation from './components/Game/Invitation';
 import Home from './components/Home/home';
+import EndGame from './components/EndGame';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
       <Route path="/register" element={<SignUp />} />
       <Route path="/game/:id/:channel" element={<Game />} />
       <Route path="/accept" element={<Invitation />} />
+      <Route path="/end" element={<EndGame />} />
     </Routes>
   </BrowserRouter>,
 );

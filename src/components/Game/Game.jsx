@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Game.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
 
@@ -14,6 +14,7 @@ function Game() {
   const [secondPlayerScore, setSecondPlayerScore] = useState(0);
   const [gameStatus, setGameStatus] = useState(null);
   const [startOfQuestion, setStartOfQuestion] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
@@ -29,22 +30,23 @@ function Game() {
         setQuestion(data.content);
         setAnswers(data.answers);
       }
-      if (type === 'round_winner') {
-        if (data.winner === Object.entries(data.answers)[1][0]) {
-          let helper = firstPlayerScore;
-          setFirstPlayerScore(helper += 10);
-        } else {
-          let helper = secondPlayerScore;
-          setSecondPlayerScore(helper += 10);
-        }
-      }
-      // if (type === 'scores_update') {
-      //   setFirstPlayerScore(Object.entries(data)[1][1]);
-      //   setSecondPlayerScore(Object.entries(data)[0][1]);
+      // if (type === 'round_winner') {
+      //   if (data.winner === Object.entries(data.answers)[1][0]) {
+      //     let helper = firstPlayerScore;
+      //     setFirstPlayerScore(helper += 10);
+      //   } else {
+      //     let helper = secondPlayerScore;
+      //     setSecondPlayerScore(helper += 10);
+      //   }
       // }
       if (type === 'game_update') {
-        // if (data.state === 'finished') {
-        // }
+        setFirstPlayerScore(Object.entries(data.score)[1][1]);
+        setSecondPlayerScore(Object.entries(data)[0][1]);
+        if (data.state === 'finished') {
+          localStorage.setItem('winner', data.winner);
+          if (data.winner === data.connected[1]) { localStorage.setItem('score', firstPlayerScore); } else { localStorage.setItem('score', secondPlayerScore); }
+          navigate('/end');
+        }
       }
     };
   }, []);
