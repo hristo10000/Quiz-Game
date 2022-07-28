@@ -3,6 +3,7 @@ import './Game.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import CustomButton from '../Button/Button';
+import cache from '../../utils/cache';
 
 function Game() {
   const { id, channel } = useParams();
@@ -39,7 +40,13 @@ function Game() {
         }
         if (data.state === 'finished') {
           localStorage.setItem('winner', data.winner.username);
-          if (data.winner === data.players[0].username) { localStorage.setItem('score', Object.entries(data.data.score)[0][1]); } else { localStorage.setItem('score', Object.entries(data.data.score)[1][1]); }
+          if (data.winner.username === data.players[1].username) {
+            cache.set('winner', { score: Object.entries(data.data.score)[0][1], username: Object.entries(data.data.score)[0][0] });
+            cache.set('loser', { score: Object.entries(data.data.score)[1][1], username: Object.entries(data.data.score)[1][0] });
+          } else {
+            cache.set('winner', { score: Object.entries(data.data.score)[1][1], username: Object.entries(data.data.score)[1][0] });
+            cache.set('loser', { score: Object.entries(data.data.score)[0][1], username: Object.entries(data.data.score)[0][0] });
+          }
           navigate('/end');
         }
       }
