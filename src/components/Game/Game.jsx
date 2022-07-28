@@ -13,6 +13,7 @@ function Game() {
   const [firstPlayerScore, setFirstPlayerScore] = useState(0);
   const [secondPlayerScore, setSecondPlayerScore] = useState(0);
   const [gameStatus, setGameStatus] = useState(null);
+  const [answerStatus, setAnswerStatus] = useState(null);
   const [startOfQuestion, setStartOfQuestion] = useState(null);
   const navigate = useNavigate();
 
@@ -23,6 +24,7 @@ function Game() {
     gameWs.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       if (type === 'question_update') {
+        setAnswerStatus('not answered');
         setStartOfQuestion(new Date());
         if (gameStatus !== 'ongoing') {
           setGameStatus('ongoing');
@@ -69,6 +71,7 @@ function Game() {
     } else {
       currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     }
+    setAnswerStatus('answered');
   };
   return (
     <>
@@ -107,7 +110,7 @@ function Game() {
           </div>
 
         ) : null
-}
+      }
 
       {question
         ? (
@@ -127,36 +130,38 @@ function Game() {
               </h3>
             </div>
             <h2>{question}</h2>
-            <div className="answers">
-              <div className="rows">
-                <div className="left-answer">
-                  <CustomButton
-                    text={answers[0].content}
-                    onClick={() => handleAnswerGiving(answers[0].id)}
-                  />
+            {answerStatus !== 'answered' ? (
+              <div className="answers">
+                <div className="rows">
+                  <div className="left-answer">
+                    <CustomButton
+                      text={answers[0].content}
+                      onClick={() => handleAnswerGiving(answers[0].id)}
+                    />
+                  </div>
+                  <div className="right-answer">
+                    <CustomButton
+                      text={answers[1].content}
+                      onClick={() => handleAnswerGiving(answers[1].id)}
+                    />
+                  </div>
                 </div>
-                <div className="right-answer">
-                  <CustomButton
-                    text={answers[1].content}
-                    onClick={() => handleAnswerGiving(answers[1].id)}
-                  />
+                <div className="rows">
+                  <div className="left-answer">
+                    <CustomButton
+                      text={answers[2].content}
+                      onClick={() => handleAnswerGiving(answers[2].id)}
+                    />
+                  </div>
+                  <div className="right-answer">
+                    <CustomButton
+                      text={answers[3].content}
+                      onClick={() => handleAnswerGiving(answers[3].id)}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="rows">
-                <div className="left-answer">
-                  <CustomButton
-                    text={answers[2].content}
-                    onClick={() => handleAnswerGiving(answers[2].id)}
-                  />
-                </div>
-                <div className="right-answer">
-                  <CustomButton
-                    text={answers[3].content}
-                    onClick={() => handleAnswerGiving(answers[3].id)}
-                  />
-                </div>
-              </div>
-            </div>
+            ) : <p>Waiting for your oponent to answer...</p>}
           </>
         )
         : ''}

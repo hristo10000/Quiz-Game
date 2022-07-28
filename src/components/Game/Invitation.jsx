@@ -1,4 +1,4 @@
-import React from 'react';
+import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CustomButton from '../Button/Button';
@@ -7,8 +7,11 @@ function Invitation({ invitedBy, gameId, channel }) {
   const navigate = useNavigate();
   return (
     <div className="home-page">
-      <h3>{`${invitedBy} invited you to play!`}</h3>
-      <CustomButton text="Accept" onClick={() => navigate(`/game/${gameId}/${channel}`)} />
+      <h5>{`${invitedBy} invited you to play!`}</h5>
+      <div className="flex-row">
+        <CustomButton text="Accept" onClick={() => navigate(`/game/${gameId}/${channel}`)} />
+        <CustomButton text="Decline" onClick={() => window.location.reload()} />
+      </div>
     </div>
   );
 }

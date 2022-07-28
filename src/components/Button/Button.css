@@ -9,6 +9,7 @@ body, html {
 }
 
 .container {
+  margin-inline: 1%;
   transform: translate(-0%, -0%);
   display: flex;
   align-self: center;

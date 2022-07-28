@@ -51,3 +51,16 @@
     margin: 0;
     font-size: 90px;
   }
+h5{
+    font-size: 40px;
+    align-self: center;
+    align-content: center;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
