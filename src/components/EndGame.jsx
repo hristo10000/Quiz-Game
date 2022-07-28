@@ -32,8 +32,6 @@ function EndGame() {
   const handleRematch = () => {
     const usernameOfLoser = loser?.username;
     const usernameOfWinner = winner?.username;
-    console.log(usernameOfLoser);
-    console.log(usernameOfWinner);
     if (me?.username === usernameOfWinner) {
       instance.post('/api/games/', { username: usernameOfLoser }).then(({ data }) => {
         navigate(`/game/${data.id}/${data.channel}`);
@@ -52,6 +50,7 @@ function EndGame() {
           invitedBy={invitation.invited_by.username}
           gameId={invitation.game_id.toString()}
           channel={invitation.channel}
+          message="want`s rematch!"
         />
       ) : (
         <>
