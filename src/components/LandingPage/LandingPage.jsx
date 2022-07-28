@@ -17,15 +17,15 @@ function LandingPage() {
   }, []);
 
   return (
-    <>
+    <div className="landing-page">
       <img src={logo} className="App-logo" alt="logo" height={300} width={450} />
       <h2>Welcome to Quiz Quest</h2>
       <h3>The quest to become the best quizer.</h3>
-      <div className="toFlex">
+      <div className="flex-row">
         <Link className="container" to="/Login"><Button text="Log In" /></Link>
         <Link className="container" to="/Register"><Button text="Sign Up" /></Link>
       </div>
-    </>
+    </div>
   );
 }
 
