@@ -39,7 +39,7 @@ function Game() {
         }
         if (data.state === 'finished') {
           localStorage.setItem('winner', data.winner.username);
-          if (data.winner === data.players[0].username) { localStorage.setItem('score', Object.entries(data.data.score)[0][1]); } else { localStorage.setItem('score', Object.entries(data.data.score)[1][1]); }
+          if (data.winner.username === data.players[1].username) { localStorage.setItem('score', Object.entries(data.data.score)[0][1]); } else { localStorage.setItem('score', Object.entries(data.data.score)[1][1]); }
           navigate('/end');
         }
       }
