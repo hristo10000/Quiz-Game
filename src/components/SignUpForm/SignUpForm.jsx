@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
+import CustomButton from '../Button/Button';
 
 function SignUpForm() {
   const [setformValue] = React.useState({
@@ -37,7 +38,7 @@ function SignUpForm() {
       <form onSubmit={handleSubmit} className="custom-form">
         <input className="custom-form-element" label="username" htmlFor="username" placeholder="enter a username" required onChange={handleChangeOnUsername} />
         <input className="custom-form-element" label="password" htmlFor="password" type="password" placeholder="enter a password" required onChange={handleChangeOnPassword} />
-        <input className="custom-form-element" type="submit" />
+        <CustomButton className="custom-form-element" type="submit" text="Submit" />
       </form>
     </>
   );
