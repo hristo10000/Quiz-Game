@@ -10,8 +10,8 @@ function Game() {
   const [gameInfo, setGameInfo] = useState(null);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState(null);
-  const [firstPlayerScore, setFirstPlayerScore] = useState(null);
-  const [secondPlayerScore, setSecondPlayerScore] = useState(null);
+  const [firstPlayerScore, setFirstPlayerScore] = useState(0);
+  const [secondPlayerScore, setSecondPlayerScore] = useState(0);
   const [gameStatus, setGameStatus] = useState(null);
   const [startOfQuestion, setStartOfQuestion] = useState(null);
 
@@ -29,9 +29,22 @@ function Game() {
         setQuestion(data.content);
         setAnswers(data.answers);
       }
-      if (type === 'scores_update') {
-        setFirstPlayerScore(Object.entries(data)[1][1]);
-        setSecondPlayerScore(Object.entries(data)[0][1]);
+      if (type === 'round_winner') {
+        if (data.winner === Object.entries(data.answers)[1][0]) {
+          let helper = firstPlayerScore;
+          setFirstPlayerScore(helper += 10);
+        } else {
+          let helper = secondPlayerScore;
+          setSecondPlayerScore(helper += 10);
+        }
+      }
+      // if (type === 'scores_update') {
+      //   setFirstPlayerScore(Object.entries(data)[1][1]);
+      //   setSecondPlayerScore(Object.entries(data)[0][1]);
+      // }
+      if (type === 'game_update') {
+        // if (data.state === 'finished') {
+        // }
       }
     };
   }, []);
