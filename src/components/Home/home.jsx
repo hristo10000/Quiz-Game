@@ -46,7 +46,7 @@ function Home() {
         <div className="home-page">
           <h1>{me?.username}</h1>
           <div className="invite-div">
-            <input onChange={handleChange} type="text" placeholder="enter oponent's username" className="invite-input" />
+            <input onChange={handleChange} type="text" placeholder="enter opponent's username" className="invite-input" />
             <CustomButton onClick={sendInvite} type="submit" text="Invite" />
           </div>
         </div>

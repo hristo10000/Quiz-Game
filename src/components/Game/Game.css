@@ -21,7 +21,6 @@
 .player h1{
     margin: 0px;
 }
-
 .rows{
     display: flex;
     flex-direction: row;
@@ -32,6 +31,7 @@
 .left-answer{
     margin-right: 70px;
 }
+
 .right-answer{
     margin-left: 70px;
 }

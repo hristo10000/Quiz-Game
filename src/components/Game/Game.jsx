@@ -102,7 +102,7 @@ function Game() {
             </div>
             <div>
               {status === 'ready'
-                ? <p>Waiting for your oponent...</p>
+                ? <p>Waiting for your opponent...</p>
                 : (
                   <CustomButton text="Ready!" onClick={handleClickReady} />
                 )}
@@ -161,7 +161,7 @@ function Game() {
                   </div>
                 </div>
               </div>
-            ) : <p>Waiting for your oponent to answer...</p>}
+            ) : <p>Waiting for your opponent to answer...</p>}
           </>
         )
         : ''}

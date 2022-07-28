@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import instance from '../../utils/Requests';
 import cache from '../../utils/cache';
@@ -9,6 +9,7 @@ function LoginForm() {
     username: '',
     password: '',
   });
+  const [passwordType, setPasswordType] = useState('password');
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ function LoginForm() {
       [event.target.name]: event.target.value,
     });
   };
+  const handlePasswordTypeChange = () => (passwordType === 'password' ? setPasswordType('text') : setPasswordType('password'));
 
   return (
     <form onSubmit={handleSubmit} className="custom-form">
@@ -48,7 +50,7 @@ function LoginForm() {
       />
       <input
         className="custom-form-element"
-        type="password"
+        type={passwordType}
         name="password"
         required
         placeholder="enter password"
@@ -59,6 +61,12 @@ function LoginForm() {
         className="custom-form-element"
         type="submit"
         text="Submit"
+      />
+      <CustomButton
+        className="custom-form-element"
+        type="button"
+        text='"toggle password'
+        onClick={handlePasswordTypeChange}
       />
     </form>
   );
