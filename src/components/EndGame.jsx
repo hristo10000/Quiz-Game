@@ -1,16 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cache from '../utils/cache';
 import CustomButton from './Button/Button';
 import instance from '../utils/Requests';
 import Invitation from './Game/Invitation';
+import rightArrow from '../images/rightArrow.png';
+import leftArrow from '../images/leftArrow.png';
+import '../App.css';
+import './Game/Game.css';
 
 function EndGame() {
   const winner = cache.get('winner');
   const loser = cache.get('loser');
   const me = cache.get('me');
+  const winnerAvatar = localStorage.getItem('winnerAvatar');
+  const loserAvatar = localStorage.getItem('loserAvatar');
   const [invitation, setInvitation] = React.useState('');
   const navigate = useNavigate();
+  const [shownPlayer, setShownPlayer] = useState('winner');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -43,6 +50,8 @@ function EndGame() {
     }
   };
 
+  const handleChangeShownPlayer = () => (shownPlayer === 'winner' ? setShownPlayer('loser') : setShownPlayer('winner'));
+
   return (
     <>
       {invitation ? (
@@ -54,32 +63,51 @@ function EndGame() {
         />
       ) : (
         <>
-          <h1>
-            The Winner is
-            {' '}
-            {winner?.username}
-            {' '}
-            with score:
-            {' '}
-            {winner?.score}
-          </h1>
-          <h1>
-            The Loser is
-            {' '}
-            {loser?.username}
-            {' '}
-            with score:
-            {' '}
-            {loser?.score}
-          </h1>
-          <CustomButton
-            text="Home"
-            onClick={handleHome}
-          />
-          <CustomButton
-            text="Rematch"
-            onClick={handleRematch}
-          />
+          <div className="flex-row">
+
+            {shownPlayer === 'winner' ? (
+              <>
+                <button type="button" onClick={handleChangeShownPlayer} className="arrowButton"><img className="arrowImg" src={leftArrow} alt="arrow" /></button>
+                <div className="winner-div">
+                  <h1>Winner</h1>
+                  <div className="winner">
+                    <img className="image-for-game" src={winnerAvatar} alt="img" />
+
+                    <h6 className="username-lobby">{winner?.username}</h6>
+
+                  </div>
+                </div>
+                <button type="button" onClick={handleChangeShownPlayer} className="arrowButton"><img className="arrowImg" src={rightArrow} alt="arrow" /></button>
+              </>
+            ) : (
+              <>
+                <button type="button" onClick={handleChangeShownPlayer} className="arrowButton"><img className="arrowImg" src={leftArrow} alt="arrow" /></button>
+                <div className="winner-div">
+                  <h1>Loser</h1>
+                  <div className="winner">
+                    <img className="image-for-game" src={loserAvatar} alt="img" />
+
+                    <h6 className="username-lobby">{loser?.username}</h6>
+
+                  </div>
+                </div>
+                <button type="button" onClick={handleChangeShownPlayer} className="arrowButton"><img className="arrowImg" src={rightArrow} alt="arrow" /></button>
+              </>
+            )}
+
+          </div>
+
+          <div className="flex-row">
+            <CustomButton
+              text="Home"
+              onClick={handleHome}
+            />
+            <CustomButton
+              text="Rematch"
+              onClick={handleRematch}
+            />
+          </div>
+
         </>
       )}
       {' '}

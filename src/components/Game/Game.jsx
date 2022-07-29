@@ -86,9 +86,13 @@ function Game() {
           if (data.winner.username === data.players[1].username) {
             cache.set('winner', { score: Object.entries(data.data.score)[0][1], username: Object.entries(data.data.score)[0][0] });
             cache.set('loser', { score: Object.entries(data.data.score)[1][1], username: Object.entries(data.data.score)[1][0] });
+            localStorage.setItem('winnerAvatar', data.players[1].avatar);
+            localStorage.setItem('loserAvatar', data.players[0].avatar);
           } else {
             cache.set('winner', { score: Object.entries(data.data.score)[1][1], username: Object.entries(data.data.score)[1][0] });
             cache.set('loser', { score: Object.entries(data.data.score)[0][1], username: Object.entries(data.data.score)[0][0] });
+            localStorage.setItem('loserAvatar', data.players[1].avatar);
+            localStorage.setItem('winnerAvatar', data.players[0].avatar);
           }
           navigate('/end');
         }
