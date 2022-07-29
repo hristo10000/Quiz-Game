@@ -8,7 +8,7 @@ import cache from '../../utils/cache';
 function Home() {
   const [username, setUsername] = React.useState('');
   const [invitation, setInvitation] = React.useState('');
-  const [topTenUsersInfo, setTopTenUsersInfo] = useState(null);
+  const [topTenUsersInfo, setTopTenUsersInfo] = useState();
   const me = cache.get('me');
   const navigate = useNavigate();
   const sendInvite = () => {
@@ -49,18 +49,51 @@ function Home() {
           message="invited you to play!"
         />
       ) : (
-        <>
-          <div className="home-page">
-            <h1>{me?.username}</h1>
-            <div className="invite-div">
-              <input onChange={handleChange} type="text" placeholder="enter opponent's username" className="invite-input" onKeyPress={(e) => e.key === 'Enter' && sendInvite()} />
-              <CustomButton onClick={sendInvite} type="submit" text="Invite" />
-
-            </div>
+        <div className="home-page">
+          <h1>{me?.username}</h1>
+          <h2 className="homepage-h2">Challenge Someone</h2>
+          <div className="invite-div">
+            <input onChange={handleChange} type="text" placeholder="enter opponent's username" className="invite-input" onKeyPress={(e) => e.key === 'Enter' && sendInvite()} />
+            <CustomButton onClick={sendInvite} type="submit" text="Invite" />
           </div>
-          <div className="leaderboard" />
-          {topTenUsersInfo[0]?.username}
-        </>
+          {topTenUsersInfo
+            && (
+              <>
+                <h2 className="homepage-h2">Leaderboard</h2>
+                <table className="leaderboard">
+                  <thead className="leaderboard-head">
+                    <tr className="leaderboard-tr">
+                      <th>#</th>
+                      <th>username</th>
+                      <th>level</th>
+                      <th>games</th>
+                      <th>wins</th>
+                      <th>score</th>
+                      <th>streak</th>
+                    </tr>
+                  </thead>
+                  <tbody className="leaderboard-body">
+                    {topTenUsersInfo.map((user) => (
+                      <tr className="leaderboard-tr">
+                        <td>
+                          {user.rang_position}
+                          .
+                        </td>
+                        <td>{user.username}</td>
+                        <td>{user.level}</td>
+                        <td>{user.games}</td>
+                        <td>{user.wins}</td>
+                        <td>{user.score}</td>
+                        <td>{user.streak}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+              </>
+            )}
+        </div>
+
       )}
     </div>
   );
