@@ -9,8 +9,12 @@ function Home() {
   const [username, setUsername] = React.useState('');
   const [invitation, setInvitation] = React.useState('');
   const me = cache.get('me');
-
   const navigate = useNavigate();
+  const sendInvite = () => {
+    instance.post('/api/games/', { username }).then(({ data }) => {
+      navigate(`/game/${data.id}/${data.channel}`);
+    });
+  };
   useEffect(() => {
     const token = localStorage.getItem('token');
     instance.defaults.headers.common.Authorization = `Token ${token}`;
@@ -23,11 +27,7 @@ function Home() {
       }
     };
   }, []);
-  const sendInvite = () => {
-    instance.post('/api/games/', { username }).then(({ data }) => {
-      navigate(`/game/${data.id}/${data.channel}`);
-    });
-  };
+
   const handleChange = (event) => {
     event.preventDefault();
     setUsername(event.target.value);
@@ -44,13 +44,18 @@ function Home() {
           message="invited you to play!"
         />
       ) : (
-        <div className="home-page">
-          <h1>{me?.username}</h1>
-          <div className="invite-div">
-            <input onChange={handleChange} type="text" placeholder="enter opponent's username" className="invite-input" />
-            <CustomButton onClick={sendInvite} type="submit" text="Invite" />
+        <>
+          <div className="home-page">
+            <h1>{me?.username}</h1>
+            <div className="invite-div">
+              <input onChange={handleChange} type="text" placeholder="enter opponent's username" className="invite-input" onKeyPress={(e) => e.key === 'Enter' && sendInvite()} />
+              <CustomButton onClick={sendInvite} type="submit" text="Invite" />
+
+            </div>
           </div>
-        </div>
+          <div className="leaderboard" />
+
+        </>
       )}
     </div>
   );
