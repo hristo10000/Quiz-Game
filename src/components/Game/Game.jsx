@@ -7,7 +7,6 @@ import cache from '../../utils/cache';
 
 function Game() {
   const { id, channel } = useParams();
-  const [currentSocket, setCurrentSocket] = useState(null);
   const [gameInfo, setGameInfo] = useState(null);
   const [question, setQuestion] = useState(null);
   const [answers, setAnswers] = useState(null);
@@ -19,6 +18,7 @@ function Game() {
   const navigate = useNavigate();
 
   const Ref = useRef(null);
+  const gameWs = useRef(null);
 
   const [timer, setTimer] = useState('00');
 
@@ -35,12 +35,11 @@ function Game() {
       total, seconds,
     } = getTimeRemaining(e);
     if (total >= 0) {
-      if (seconds === 0) {
-        console.log('here');
-        currentSocket.send(JSON.stringify({
+      if (seconds === 1) {
+        gameWs.current.send(JSON.stringify({
           type: 'question_answer',
           data:
-        { answer: null, time: 0 },
+        { answer: null, time: -10000 },
         }));
       }
       setTimer(seconds);
@@ -48,7 +47,6 @@ function Game() {
   };
 
   const clearTimer = (e) => {
-    setTimer('10');
     if (Ref.current) clearInterval(Ref.current);
     const idTimer = setInterval(() => {
       startTimer(e);
@@ -61,18 +59,14 @@ function Game() {
     deadline.setSeconds(deadline.getSeconds() + 10);
     return deadline;
   };
-  useEffect(() => {
-    clearTimer(getDeadTime());
-  }, []);
   const ResetTimer = () => {
     clearTimer(getDeadTime());
   };
 
   useEffect(() => {
     instance.get(`/api/games/${id}/`).then((res) => setGameInfo(res.data));
-    const gameWs = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
-    setCurrentSocket(gameWs);
-    gameWs.onmessage = (e) => {
+    gameWs.current = new WebSocket(`ws://192.168.182.94:8001/ws/game/${localStorage.getItem('token')}/${channel}/`);
+    gameWs.current.onmessage = (e) => {
       const { type, data } = JSON.parse(e.data);
       if (type === 'question_update') {
         ResetTimer();
@@ -115,16 +109,16 @@ function Game() {
     if (status === 'ready') { setStatus('not ready'); } else {
       setStatus('ready');
     }
-    currentSocket.send(JSON.stringify({ type: 'game_connect', data: 'ok' }));
+    gameWs.current.send(JSON.stringify({ type: 'game_connect', data: 'ok' }));
   };
 
   const handleAnswerGiving = (idOfAnswer) => {
     const timeofAnswer = new Date();
     const secondsPassed = timeofAnswer.getTime() - startOfQuestion.getTime();
     if (secondsPassed > 10000) {
-      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: null, time: 10000 - secondsPassed } }));
+      gameWs.current.send(JSON.stringify({ type: 'question_answer', data: { answer: null, time: 10000 - secondsPassed } }));
     } else {
-      currentSocket.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
+      gameWs.current.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     }
     setAnswerStatus('answered');
   };
