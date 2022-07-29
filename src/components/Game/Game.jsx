@@ -56,7 +56,7 @@ function Game() {
 
   const getDeadTime = () => {
     const deadline = new Date();
-    deadline.setSeconds(deadline.getSeconds() + 10);
+    deadline.setSeconds(deadline.getSeconds() + 11);
     return deadline;
   };
   const ResetTimer = () => {
