@@ -59,7 +59,7 @@ function Home() {
             </div>
           </div>
           <div className="leaderboard" />
-
+          {topTenUsersInfo[0]?.username}
         </>
       )}
     </div>

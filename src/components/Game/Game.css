@@ -149,3 +149,7 @@ h5{
     padding:0;
     font-size: 36px;
 }
+.leaderboard{
+    display: flex;
+    flex-direction: column;
+}
