@@ -4,6 +4,22 @@
     width: 400px;
     height: 510px;
 }
+.winner{
+    border: 2px solid black;
+    margin: 50px;
+    width: 500px;
+    height: 650px;
+}
+.winner-div>h1{
+    margin:0;
+}
+.loser{
+    position: fixed;
+    border: 2px solid black;
+    margin: 20px;
+    width: 250px;
+    height: 300px;
+}
 .player-score>.player{
     border: 2px solid black;
     margin: 0;
@@ -126,4 +142,19 @@ h5{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.arrowButton{
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: white;
+}
+.arrowImg{
+    border: none;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+}
+.arrowImg:hover{
+    cursor: pointer;
 }
