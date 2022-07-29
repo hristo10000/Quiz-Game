@@ -20,7 +20,7 @@ function Game() {
   const Ref = useRef(null);
   const gameWs = useRef(null);
 
-  const [timer, setTimer] = useState('00');
+  const [timer, setTimer] = useState('10');
 
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date());
@@ -35,7 +35,7 @@ function Game() {
       total, seconds,
     } = getTimeRemaining(e);
     if (total >= 0) {
-      if (seconds === 1) {
+      if (seconds === 0) {
         gameWs.current.send(JSON.stringify({
           type: 'question_answer',
           data:
