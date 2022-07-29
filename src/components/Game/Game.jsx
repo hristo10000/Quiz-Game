@@ -35,7 +35,7 @@ function Game() {
       total, seconds,
     } = getTimeRemaining(e);
     if (total >= 0) {
-      if (seconds === 0) {
+      if (seconds === 1) {
         console.log('here');
         currentSocket.send(JSON.stringify({
           type: 'question_answer',
