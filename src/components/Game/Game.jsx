@@ -35,6 +35,14 @@ function Game() {
       total, seconds,
     } = getTimeRemaining(e);
     if (total >= 0) {
+      if (seconds === 0) {
+        console.log('here');
+        currentSocket.send(JSON.stringify({
+          type: 'question_answer',
+          data:
+        { answer: null, time: 0 },
+        }));
+      }
       setTimer(seconds);
     }
   };
