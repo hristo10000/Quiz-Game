@@ -115,11 +115,7 @@ function Game() {
   const handleAnswerGiving = (idOfAnswer) => {
     const timeofAnswer = new Date();
     const secondsPassed = timeofAnswer.getTime() - startOfQuestion.getTime();
-    if (secondsPassed > 10000) {
-      gameWs.current.send(JSON.stringify({ type: 'question_answer', data: { answer: null, time: 10000 - secondsPassed } }));
-    } else {
-      gameWs.current.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
-    }
+    gameWs.current.send(JSON.stringify({ type: 'question_answer', data: { answer: idOfAnswer, time: 10000 - secondsPassed } }));
     setAnswerStatus('answered');
   };
   return (
