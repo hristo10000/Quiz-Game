@@ -124,8 +124,8 @@ h1{
 }
 
 .eye{
-  position:fixed;
-  
+  margin-top: 5px;;
+  position: fixed;
   width: 43px;
   height: 30px;
   background-color: white;
