@@ -22,8 +22,8 @@ function Home() {
     const ws = new WebSocket(`ws://192.168.182.94:8001/ws/invitations/${token}/`);
     console.log('here');
     instance.get('/api/players/').then((res) => {
-      setTopTenUsersInfo(res.data);
-      console.log(res.data);
+      setTopTenUsersInfo(res.data.players);
+      console.log(res.data.players);
     });
 
     ws.onmessage = (e) => {
