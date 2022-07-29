@@ -171,7 +171,7 @@ function Game() {
 
                 <h6 className="username-lobby">{gameInfo.players[0].username}</h6>
 
-                <h3>
+                <h3 className="score">
                   score:
                   {' '}
                   {firstPlayerScore}
@@ -222,7 +222,7 @@ function Game() {
 
                 <h6 className="username-lobby">{gameInfo.players[1].username}</h6>
 
-                <h3>
+                <h3 className="score">
                   score:
                   {' '}
                   {secondPlayerScore}

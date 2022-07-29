@@ -68,12 +68,17 @@ function EndGame() {
             {shownPlayer === 'winner' ? (
               <>
                 <button type="button" onClick={handleChangeShownPlayer} className="arrowButton"><img className="arrowImg" src={leftArrow} alt="arrow" /></button>
-                <div className="winner-div">
+                <div className="end-game-player-div">
                   <h1>Winner</h1>
-                  <div className="winner">
+                  <div className="end-game-player">
                     <img className="image-for-game" src={winnerAvatar} alt="img" />
 
                     <h6 className="username-lobby">{winner?.username}</h6>
+
+                    <h3 className="score">
+                      score:
+                      {winner?.score}
+                    </h3>
 
                   </div>
                 </div>
@@ -82,12 +87,17 @@ function EndGame() {
             ) : (
               <>
                 <button type="button" onClick={handleChangeShownPlayer} className="arrowButton"><img className="arrowImg" src={leftArrow} alt="arrow" /></button>
-                <div className="winner-div">
+                <div className="end-game-player-div">
                   <h1>Loser</h1>
-                  <div className="winner">
+                  <div className="end-game-player">
                     <img className="image-for-game" src={loserAvatar} alt="img" />
 
                     <h6 className="username-lobby">{loser?.username}</h6>
+
+                    <h3 className="score">
+                      score:
+                      {loser?.score}
+                    </h3>
 
                   </div>
                 </div>
