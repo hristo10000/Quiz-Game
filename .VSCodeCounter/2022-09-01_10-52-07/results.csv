@@ -1,0 +1,28 @@
+"filename", "language", "Markdown", "JSON with Comments", "JSON", "HTML", "CSS", "JavaScript React", "XML", "JavaScript", "comment", "blank", "total"
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\.eslintrc.json", "JSON with Comments", 0, 22, 0, 0, 0, 0, 0, 0, 0, 1, 23
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\README.md", "Markdown", 38, 0, 0, 0, 0, 0, 0, 0, 0, 33, 71
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\package-lock.json", "JSON", 0, 0, 29164, 0, 0, 0, 0, 0, 0, 1, 29165
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\package.json", "JSON", 0, 0, 65, 0, 0, 0, 0, 0, 0, 1, 66
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\public\index.html", "HTML", 0, 0, 0, 20, 0, 0, 0, 0, 23, 1, 44
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\public\manifest.json", "JSON", 0, 0, 9, 0, 0, 0, 0, 0, 0, 1, 10
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\App.css", "CSS", 0, 0, 0, 0, 122, 0, 0, 0, 0, 20, 142
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\App.jsx", "JavaScript React", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Button\Button.css", "CSS", 0, 0, 0, 0, 60, 0, 0, 0, 0, 8, 68
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Button\Button.jsx", "JavaScript React", 0, 0, 0, 0, 0, 28, 0, 0, 1, 5, 34
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\EndGame.jsx", "JavaScript React", 0, 0, 0, 0, 0, 122, 0, 0, 0, 7, 129
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Game\Game.css", "CSS", 0, 0, 0, 0, 186, 0, 0, 0, 0, 0, 186
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Game\Game.jsx", "JavaScript React", 0, 0, 0, 0, 0, 204, 0, 0, 0, 32, 236
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Game\Invitation.jsx", "JavaScript React", 0, 0, 0, 0, 0, 35, 0, 0, 0, 6, 41
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Header.jsx", "JavaScript React", 0, 0, 0, 0, 0, 12, 0, 0, 0, 3, 15
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Home\home.jsx", "JavaScript React", 0, 0, 0, 0, 0, 96, 0, 0, 0, 7, 103
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\LandingPage\LandingPage.jsx", "JavaScript React", 0, 0, 0, 0, 0, 28, 0, 0, 0, 5, 33
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\LogInForm\LogInForm.jsx", "JavaScript React", 0, 0, 0, 0, 0, 78, 0, 0, 0, 4, 82
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\LogOut.jsx", "JavaScript React", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\SignUpForm\SignUpForm.jsx", "JavaScript React", 0, 0, 0, 0, 0, 61, 0, 0, 0, 7, 68
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\index.css", "CSS", 0, 0, 0, 0, 12, 0, 0, 0, 0, 2, 14
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\index.jsx", "JavaScript React", 0, 0, 0, 0, 0, 33, 0, 0, 3, 3, 39
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\logo.svg", "XML", 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\reportWebVitals.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 14, 0, 2, 16
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\utils\Requests.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 5, 0, 3, 8
+"c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\utils\cache.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, 18, 0, 2, 20
+"Total", "-", 38, 22, 29238, 20, 380, 723, 1, 37, 27, 160, 30646

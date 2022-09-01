@@ -1,0 +1,67 @@
+Date : 2022-09-01 10:52:07
+Directory : c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game
+Total : 26 files,  30459 codes, 27 comments, 160 blanks, all 30646 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          3 |     29,238 |          0 |          3 |     29,241 |
+| JavaScript React   |         12 |        723 |          4 |         85 |        812 |
+| CSS                |          4 |        380 |          0 |         30 |        410 |
+| Markdown           |          1 |         38 |          0 |         33 |         71 |
+| JavaScript         |          3 |         37 |          0 |          7 |         44 |
+| JSON with Comments |          1 |         22 |          0 |          1 |         23 |
+| HTML               |          1 |         20 |         23 |          1 |         44 |
+| XML                |          1 |          1 |          0 |          0 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                         | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                            |         26 |     30,459 |         27 |        160 |     30,646 |
+| public                                                                                       |          2 |         29 |         23 |          2 |         54 |
+| src                                                                                          |         20 |      1,141 |          4 |        122 |      1,267 |
+| src\components                                                                               |         12 |        923 |          1 |         87 |      1,011 |
+| src\components\Button                                                                        |          2 |         88 |          1 |         13 |        102 |
+| src\components\Game                                                                          |          3 |        425 |          0 |         38 |        463 |
+| src\components\Home                                                                          |          1 |         96 |          0 |          7 |        103 |
+| src\components\LandingPage                                                                   |          1 |         28 |          0 |          5 |         33 |
+| src\components\LogInForm                                                                     |          1 |         78 |          0 |          4 |         82 |
+| src\components\SignUpForm                                                                    |          1 |         61 |          0 |          7 |         68 |
+| src\utils                                                                                    |          2 |         23 |          0 |          5 |         28 |
++----------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                     | language           | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\.eslintrc.json                             | JSON with Comments |         22 |          0 |          1 |         23 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\README.md                                  | Markdown           |         38 |          0 |         33 |         71 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\package-lock.json                          | JSON               |     29,164 |          0 |          1 |     29,165 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\package.json                               | JSON               |         65 |          0 |          1 |         66 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\public\index.html                          | HTML               |         20 |         23 |          1 |         44 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\public\manifest.json                       | JSON               |          9 |          0 |          1 |         10 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\App.css                                | CSS                |        122 |          0 |         20 |        142 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\App.jsx                                | JavaScript React   |         13 |          0 |          3 |         16 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Button\Button.css           | CSS                |         60 |          0 |          8 |         68 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Button\Button.jsx           | JavaScript React   |         28 |          1 |          5 |         34 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\EndGame.jsx                 | JavaScript React   |        122 |          0 |          7 |        129 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Game\Game.css               | CSS                |        186 |          0 |          0 |        186 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Game\Game.jsx               | JavaScript React   |        204 |          0 |         32 |        236 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Game\Invitation.jsx         | JavaScript React   |         35 |          0 |          6 |         41 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Header.jsx                  | JavaScript React   |         12 |          0 |          3 |         15 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\Home\home.jsx               | JavaScript React   |         96 |          0 |          7 |        103 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\LandingPage\LandingPage.jsx | JavaScript React   |         28 |          0 |          5 |         33 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\LogInForm\LogInForm.jsx     | JavaScript React   |         78 |          0 |          4 |         82 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\LogOut.jsx                  | JavaScript React   |         13 |          0 |          3 |         16 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\components\SignUpForm\SignUpForm.jsx   | JavaScript React   |         61 |          0 |          7 |         68 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\index.css                              | CSS                |         12 |          0 |          2 |         14 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\index.jsx                              | JavaScript React   |         33 |          3 |          3 |         39 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\logo.svg                               | XML                |          1 |          0 |          0 |          1 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\reportWebVitals.js                     | JavaScript         |         14 |          0 |          2 |         16 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\utils\Requests.js                      | JavaScript         |          5 |          0 |          3 |          8 |
+| c:\Users\Hristo Ivanov\Documents\GitHub\Quiz-Game\src\utils\cache.js                         | JavaScript         |         18 |          0 |          2 |         20 |
+| Total                                                                                        |                    |     30,459 |         27 |        160 |     30,646 |
++----------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
